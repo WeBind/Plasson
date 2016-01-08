@@ -55,7 +55,7 @@ public class GenericResource {
     @Consumes("application/xml")
     public void postXml(String content) {
         try {
-            Controller controller = new Controller("plassonOrder");
+            Controller controller = new Controller("plassonOrder", "all");
             controller.fillModel(content);
             controller.deployScenario();
             controller.startScenario();

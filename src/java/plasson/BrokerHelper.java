@@ -20,9 +20,11 @@ public class BrokerHelper {
     private Connection connection;
     private Channel channel;
     private String EXCHANGE_NAME;
+    private String BROADCAST_NAME;
 
-    public BrokerHelper(String name){
+    public BrokerHelper(String name, String broadcast){
         EXCHANGE_NAME = name;
+        BROADCAST_NAME = broadcast;
     }
 
     public void connect() throws IOException{
@@ -43,7 +45,7 @@ public class BrokerHelper {
     }
 
     public void sendBroadcast(String message)  throws IOException{
-        channel.basicPublish(EXCHANGE_NAME, "all", null, message.getBytes());
+        channel.basicPublish(EXCHANGE_NAME, BROADCAST_NAME, null, message.getBytes());
     }
 
     public void close() throws IOException{

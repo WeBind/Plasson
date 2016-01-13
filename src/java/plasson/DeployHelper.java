@@ -5,10 +5,10 @@
 
 package plasson;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
- *
  * @author Nicolas
  */
 public class DeployHelper {
@@ -25,9 +25,19 @@ public class DeployHelper {
 
     public void deployProvider(String name, String exchangeName, String broadcast){
         System.out.println("Deploying " + name +  " " + exchangeName + " " + broadcast);
+        File f = new File("/tmp/" + name +  ".omg");
         try {
-            new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).start();
+            f.createNewFile();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).redirectErrorStream(true).redirectOutput(f).start();
+            p.waitFor();
+//            Thread.sleep(5000);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }

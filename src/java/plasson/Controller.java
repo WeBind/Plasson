@@ -19,10 +19,12 @@ import org.xml.sax.SAXException;
 public class Controller {
 
     String exchangeName;
+    String broadcastName;
 
-    public Controller(String exchangeName){
+    public Controller(String exchangeName, String broadcastName){
 
         this.exchangeName = exchangeName;
+        this.broadcastName = broadcastName;
 
     }
 
@@ -42,16 +44,16 @@ public class Controller {
 
 
         for(String consumerId : consumers.keySet()){
-            deployHelper.deployConsumer(consumerId, exchangeName);
+            deployHelper.deployConsumer(consumerId, exchangeName, broadcastName);
         }
         for(String providerId : providers.keySet()){
-            deployHelper.deployProvider(providerId, exchangeName);
+            deployHelper.deployProvider(providerId, exchangeName, broadcastName);
         }
 
     }
     public void startScenario() throws IOException{
 
-        BrokerHelper broker = new BrokerHelper(exchangeName);
+        BrokerHelper broker = new BrokerHelper(exchangeName, broadcastName);
         JsonHelper jsonBuilder = new JsonHelper();
         broker.connect();
         HashMap<String, Consumer> consumers = Model.getInstance().getConsumers();
@@ -65,7 +67,8 @@ public class Controller {
             broker.send(jsonBuilder.getJson(providers.get(providerId)).toString(),providerId);
         }
 
-        broker.sendBroadcast("go");
+        broker.sendBroadcast(jsonBuilder.getGoJson().toString());
     }
 
 }
+

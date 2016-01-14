@@ -19,6 +19,7 @@ public class JsonHelper {
     public JSONObject getJson(Consumer consumer){
         JSONObject obj = new JSONObject();
         try {
+            obj.put("type", "config");
             obj.put("startingTime", consumer.getStartingTime());
             obj.put("size", consumer.getSize());
             obj.put("frequency", consumer.getFrequency());
@@ -33,8 +34,19 @@ public class JsonHelper {
     public JSONObject getJson(Provider provider){
         JSONObject obj = new JSONObject();
         try {
+            obj.put("type", "config");
             obj.put("responseLength", provider.getResponseLength());
             obj.put("responseTime", provider.getResponseTime());
+        } catch (JSONException ex) {
+            Logger.getLogger(JsonHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return obj;
+    }
+
+    public JSONObject getGoJson(){
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("type", "go");
         } catch (JSONException ex) {
             Logger.getLogger(JsonHelper.class.getName()).log(Level.SEVERE, null, ex);
         }

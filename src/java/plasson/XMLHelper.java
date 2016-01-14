@@ -174,7 +174,7 @@ public class XMLHelper {
         Document doc = buildDocument(xmlPath);
         HashMap<String, Consumer> consumers = new HashMap<String, Consumer>();
 
-        int number = this.getProvidersCount(xmlPath);
+        int number = this.getConsumersCount(xmlPath);
 
         for(int i = 1 ; i <= number ; i++){
             Consumer consumer = this.getConsumerAt(xmlPath, i);

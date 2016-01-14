@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="war_exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PlassonWebApp" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="jettison-1.0-RC2" />
+          <element id="library" level="project" name="rabbitmq-client" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="PlassonWebApp/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -18,13 +18,15 @@ import org.xml.sax.SAXException;
  */
 public class Controller {
 
-    String exchangeName;
-    String broadcastName;
+    private String exchangeName;
+    private String broadcastName;
+    private String callbackName;
 
-    public Controller(String exchangeName, String broadcastName){
+    public Controller(String exchangeName, String broadcastName, String callbackName){
 
         this.exchangeName = exchangeName;
         this.broadcastName = broadcastName;
+        this.callbackName = callbackName;
 
     }
 
@@ -44,21 +46,23 @@ public class Controller {
 
 
         for(String consumerId : consumers.keySet()){
-            deployHelper.deployConsumer(consumerId, exchangeName, broadcastName);
+            deployHelper.deployConsumer(consumerId, exchangeName, broadcastName, callbackName);
         }
         for(String providerId : providers.keySet()){
-            deployHelper.deployProvider(providerId, exchangeName, broadcastName);
+            deployHelper.deployProvider(providerId, exchangeName, broadcastName, callbackName);
         }
 
     }
+
     public void startScenario() throws IOException{
 
-        BrokerHelper broker = new BrokerHelper(exchangeName, broadcastName);
+        BrokerHelper broker = new BrokerHelper(exchangeName, broadcastName, callbackName);
         JsonHelper jsonBuilder = new JsonHelper();
         broker.connect();
         HashMap<String, Consumer> consumers = Model.getInstance().getConsumers();
         HashMap<String, Provider> providers = Model.getInstance().getProviders();
 
+        broker.setUpCallbackQueue();
 
         for(String consumerId : consumers.keySet()){
             broker.send(jsonBuilder.getJson(consumers.get(consumerId)).toString(),consumerId);

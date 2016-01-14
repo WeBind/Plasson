@@ -53,11 +53,12 @@ public class GenericResource {
      */
     @POST
     @Consumes("application/xml")
-    public void postXml(String content) {
+    public void postXml(String content) throws InterruptedException {
         try {
-            Controller controller = new Controller("plassonOrder", "all");
+            Controller controller = new Controller("plassonOrder", "all", "callback_queue");
             controller.fillModel(content);
             controller.deployScenario();
+            Thread.sleep(5000);
             controller.startScenario();
 
         } catch (ParserConfigurationException ex) {

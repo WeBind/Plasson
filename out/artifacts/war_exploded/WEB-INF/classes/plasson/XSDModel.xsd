@@ -1,0 +1,41 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Scenario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Providers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Provider" maxOccurs="100" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:integer" name="id"/>
+                    <xs:element type="xs:integer" name="Response_length"/>
+                    <xs:element type="xs:integer" name="Response_time"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Consumers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Consumer" maxOccurs="100" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:integer" name="id"/>
+                    <xs:element type="xs:integer" name="Starting_time"/>
+                    <xs:element type="xs:integer" name="Size"/>
+                    <xs:element type="xs:float" name="Frequency"/>
+                    <xs:element type="xs:integer" name="Duration"/>
+                    <xs:element type="xs:integer" name="Provider"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

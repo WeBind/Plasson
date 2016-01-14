@@ -34,7 +34,6 @@ public class DeployHelper {
         try {
             Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).redirectErrorStream(true).redirectOutput(f).start();
             p.waitFor();
-//            Thread.sleep(5000);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {

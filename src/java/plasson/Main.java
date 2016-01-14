@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
  */
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         try {
             String xmlPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XMLTest.xml";
             String xsdPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XSDModel.xsd";
@@ -47,6 +47,8 @@ public class Main {
                     Controller c = new Controller("ex1", "all");
                     c.fillModel(xml);
                     c.deployScenario();
+                    Thread.sleep(5000);
+
                     c.startScenario();
                 } else {
                     System.out.println("PAS VALIDE¡¡¡¡ DDDDDDDD:");

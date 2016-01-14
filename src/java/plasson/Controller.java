@@ -67,7 +67,8 @@ public class Controller {
             broker.send(jsonBuilder.getJson(providers.get(providerId)).toString(),providerId);
         }
 
-        broker.sendBroadcast("go");
+        broker.sendBroadcast(jsonBuilder.getGoJson().toString());
     }
 
 }
+

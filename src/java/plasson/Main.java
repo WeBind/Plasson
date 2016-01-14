@@ -44,7 +44,7 @@ public class Main {
                     System.out.println("Provider2="+provider2.toString());*/
 //                    System.out.println("Consumers=" + xmlTester.getConsumers(xml));
 //                    System.out.println("Providers=" + xmlTester.getProviders(xml));
-                    Controller c = new Controller("ex1", "all");
+                    Controller c = new Controller("ex1", "all", "callback_queue");
                     c.fillModel(xml);
                     c.deployScenario();
                     Thread.sleep(5000);

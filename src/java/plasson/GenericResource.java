@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
  * @author Nicolas
  */
 
-@Path("generic")
+@Path("")
 public class GenericResource {
     @Context
     private UriInfo context;

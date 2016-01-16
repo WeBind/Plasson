@@ -27,6 +27,8 @@ import org.xml.sax.InputSource;
  */
 public class XMLHelper {
 
+    private int maxConsumerEndTime = 0;
+    private int maxProviderResponseTime = 0;
    
 
     public static boolean validateXML(String xsdPath, String xmlPath){
@@ -94,6 +96,11 @@ public class XMLHelper {
         node = (Node)exprProvider.evaluate(doc,XPathConstants.NODE);
         consumer.setProvider(Integer.valueOf(node.getNodeValue()));
 
+        if(consumer.getDuration()+consumer.getStartingTime()>maxConsumerEndTime){
+
+            maxConsumerEndTime = consumer.getDuration()+consumer.getStartingTime();
+        }
+
     return consumer;
     }
 
@@ -120,6 +127,10 @@ public class XMLHelper {
 
         node = (Node)exprResponseTime.evaluate(doc,XPathConstants.NODE);
         provider.setResponseTime(Integer.valueOf(node.getNodeValue()));
+
+        if(provider.getResponseTime()>maxProviderResponseTime){
+            maxProviderResponseTime = provider.getResponseTime();
+        }
 
     return provider;
     }
@@ -154,7 +165,11 @@ public class XMLHelper {
 
     }
 
-    public HashMap<String,Provider> getProviders(String xmlPath) throws ParserConfigurationException, SAXException, SAXException, IOException, XPathExpressionException{
+    public ProviderReturn getProviders(String xmlPath) throws ParserConfigurationException, SAXException, SAXException, IOException, XPathExpressionException{
+        
+        maxProviderResponseTime = 0;
+
+
         Document doc = buildDocument(xmlPath);
         HashMap<String, Provider> providers = new HashMap<String, Provider>();
 
@@ -165,12 +180,15 @@ public class XMLHelper {
             providers.put("provider"+provider.getId(), provider);
         }
 
+        ProviderReturn result = new ProviderReturn(providers, maxProviderResponseTime);
 
-        return providers;
+        return result;
 
     }
 
-    public HashMap<String,Consumer> getConsumers(String xmlPath) throws ParserConfigurationException, SAXException, SAXException, IOException, XPathExpressionException{
+    public ConsumerReturn getConsumers(String xmlPath) throws ParserConfigurationException, SAXException, SAXException, IOException, XPathExpressionException{
+
+        maxConsumerEndTime = 0;
         Document doc = buildDocument(xmlPath);
         HashMap<String, Consumer> consumers = new HashMap<String, Consumer>();
 
@@ -181,8 +199,8 @@ public class XMLHelper {
             consumers.put("consumer"+consumer.getId(), consumer);
         }
 
-
-        return consumers;
+        ConsumerReturn result = new ConsumerReturn(consumers, maxConsumerEndTime);
+        return result;
 
     }
 
@@ -194,6 +212,46 @@ public class XMLHelper {
         InputSource inputSource = new InputSource(new StringReader(xml));
         Document doc = builder.parse(inputSource);
         return doc;
+    }
+
+    public class ConsumerReturn{
+        private HashMap<String,Consumer> consumers;
+        private int maxConsumerEndTime;
+
+        public ConsumerReturn(HashMap<String, Consumer> consumers, int maxConsumerEndTime) {
+            this.consumers = consumers;
+            this.maxConsumerEndTime = maxConsumerEndTime;
+        }
+
+
+        public HashMap<String, Consumer> getConsumers() {
+            return consumers;
+        }
+
+        public int getMaxConsumerEndTime() {
+            return maxConsumerEndTime;
+        }
+
+    }
+
+    public class ProviderReturn{
+        private HashMap<String,Provider> providers;
+        private int maxProviderEndTime;
+
+        public ProviderReturn(HashMap<String, Provider> providers, int maxProviderEndTime) {
+            this.providers = providers;
+            this.maxProviderEndTime = maxProviderEndTime;
+        }
+
+        public int getMaxProviderEndTime() {
+            return maxProviderEndTime;
+        }
+
+        public HashMap<String, Provider> getProviders() {
+            return providers;
+        }
+
+
     }
 }
 

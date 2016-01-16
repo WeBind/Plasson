@@ -7,16 +7,17 @@ package plasson;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import org.xml.sax.SAXException;
+
+
 
 /**
  *
  * @author Nicolas
  */
-public class Controller {
+public class Controller implements BrokerHelper.BrokerListener{
 
     private String exchangeName;
     private String broadcastName;
@@ -34,8 +35,12 @@ public class Controller {
 
         XMLHelper xmlHelper = new XMLHelper();
 
-        Model.getInstance().setConsumers(xmlHelper.getConsumers(xml));
-        Model.getInstance().setProviders(xmlHelper.getProviders(xml));
+        XMLHelper.ConsumerReturn consumers = xmlHelper.getConsumers(xml);
+        XMLHelper.ProviderReturn providers = xmlHelper.getProviders(xml);
+
+        Model.getInstance().setConsumers(consumers.getConsumers());
+        Model.getInstance().setProviders(providers.getProviders());
+        Model.getInstance().setScenarioEndTime(consumers.getMaxConsumerEndTime()+providers.getMaxProviderEndTime());
 
     }
 
@@ -56,7 +61,7 @@ public class Controller {
 
     public void startScenario() throws IOException{
 
-        BrokerHelper broker = new BrokerHelper(exchangeName, broadcastName, callbackName);
+        BrokerHelper broker = new BrokerHelper(exchangeName, broadcastName, callbackName, this);
         JsonHelper jsonBuilder = new JsonHelper();
         broker.connect();
         HashMap<String, Consumer> consumers = Model.getInstance().getConsumers();
@@ -72,6 +77,22 @@ public class Controller {
         }
 
         broker.sendBroadcast(jsonBuilder.getGoJson().toString());
+    }
+
+    public void receiveResult(Results results) {
+
+        System.out.println("Yay got a result");
+
+        if(Model.getInstance().getConsumers().containsKey(results.getId())){
+            Model.getInstance().getConsumers().get(results.getId()).setResults(results);
+        }else if(Model.getInstance().getProviders().containsKey(results.getId())){
+            Model.getInstance().getProviders().get(results.getId()).setResults(results);
+        }else{
+            System.out.println("Error: not found corresponding results");
+
+        }
+
+
     }
 
 }

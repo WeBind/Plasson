@@ -17,6 +17,7 @@ public class Consumer {
     private float frequency;
     private int duration;
     private int provider;
+    private Results results;
 
     public Consumer(int id, int startingTime, int size, float frequency, int duration, int provider) {
         this.id = id;
@@ -86,6 +87,16 @@ public class Consumer {
     public void setStartingTime(int startingTime) {
         this.startingTime = startingTime;
     }
+
+    public Results getResults() {
+        return results;
+    }
+
+    public void setResults(Results results) {
+        this.results = results;
+    }
+
+    
 
 
 }

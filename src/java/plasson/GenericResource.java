@@ -54,7 +54,7 @@ public class GenericResource {
     @POST
     @Consumes("application/xml")
     public void postXml(String content) throws InterruptedException {
-        try {
+        /*try {
             Controller controller = new Controller("plassonOrder", "all", "callback_queue");
             controller.fillModel(content);
             controller.deployScenario();
@@ -69,6 +69,8 @@ public class GenericResource {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
         } catch (XPathExpressionException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
+
+        System.out.println("[REST API] POST: "+content);
     }
 }

@@ -18,6 +18,7 @@ public final class Model {
 
      private HashMap<String,Provider> providers;
      private HashMap<String,Consumer> consumers;
+     private int scenarioEndTime;
 
     
      private Model() {
@@ -55,5 +56,14 @@ public final class Model {
         this.providers = providers;
     }
 
+    public int getScenarioEndTime() {
+        return scenarioEndTime;
+    }
+
+    public void setScenarioEndTime(int scenarioEndTime) {
+        this.scenarioEndTime = scenarioEndTime;
+    }
+
+    
 
 }

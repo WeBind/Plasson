@@ -21,11 +21,13 @@ public class BrokerHelper {
     private String EXCHANGE_NAME;
     private String BROADCAST_NAME;
     private String CALLBACK_NAME;
+    private BrokerListener myListener;
 
-    public BrokerHelper(String name, String broadcast, String callback){
+    public BrokerHelper(String name, String broadcast, String callback, BrokerListener listener){
         EXCHANGE_NAME = name;
         BROADCAST_NAME = broadcast;
         CALLBACK_NAME = callback;
+        myListener = listener;
     }
 
     public void connect() throws IOException{
@@ -69,6 +71,8 @@ public class BrokerHelper {
                 String message = new String(body, "UTF-8");
                 //TODO : ajouter ici le traitement des résultats
                 System.out.println(" [x] Received results'" + message + "'");
+                JsonHelper jsonHelper = new JsonHelper();
+                myListener.receiveResult(jsonHelper.getResults(message));
             }
         };
         return  consumer;
@@ -82,6 +86,12 @@ public class BrokerHelper {
             System.out.println("Error : Close broker");
         }
     }
+    
+    public interface BrokerListener{
+        public void receiveResult(Results results);
+    }
+
+
 
 
 

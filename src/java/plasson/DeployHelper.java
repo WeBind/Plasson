@@ -7,6 +7,8 @@ package plasson;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Nicolas
@@ -32,10 +34,10 @@ public class DeployHelper {
             e.printStackTrace();
         }
         try {
-            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).redirectErrorStream(true).redirectOutput(f).start();
+            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).start();
             p.waitFor();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

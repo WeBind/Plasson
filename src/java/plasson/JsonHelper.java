@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import com.google.gson.Gson;
+
 
 /**
  *
@@ -52,6 +54,16 @@ public class JsonHelper {
             Logger.getLogger(JsonHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         return obj;
+    }
+
+
+    public Results getResults(String receivedResults){
+        
+        Gson g = new Gson();
+
+        Results results = g.fromJson(receivedResults, Results.class);
+
+        return results;
     }
 
 

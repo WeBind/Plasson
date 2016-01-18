@@ -17,6 +17,12 @@
     </dependency>
 
     <dependency>
+      <groupId>com.rabbitmq</groupId>
+      <artifactId>amqp-client</artifactId>
+      <version>3.6.0</version>
+    </dependency>
+
+    <dependency>
       <groupId>javax.servlet.jsp</groupId>
       <artifactId>jsp-api</artifactId>
       <version>2.1</version>
@@ -49,6 +55,11 @@
       <artifactId>gson</artifactId>
       <version>2.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javax</artifactId>
+      <version>2.0</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -65,6 +76,10 @@
     <finalName>WebApplicationPlasson</finalName>
   </build>
 </project>
+
+
+
+
 
 
 

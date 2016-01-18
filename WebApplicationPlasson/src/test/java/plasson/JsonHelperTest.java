@@ -30,7 +30,7 @@ public class JsonHelperTest extends TestCase {
 
     /**
      * Test of getJson method, of class JsonHelper.
-     */
+     *
     public void testGetJson_Consumer() {
         System.out.println("getJson");
         Consumer consumer = null;
@@ -42,7 +42,7 @@ public class JsonHelperTest extends TestCase {
 
     /**
      * Test of getJson method, of class JsonHelper.
-     */
+     *
     public void testGetJson_Provider() {
         System.out.println("getJson");
         Provider provider = null;
@@ -54,7 +54,7 @@ public class JsonHelperTest extends TestCase {
 
     /**
      * Test of getGoJson method, of class JsonHelper.
-     */
+     *
     public void testGetGoJson() {
         System.out.println("getGoJson");
         JsonHelper instance = new JsonHelper();
@@ -65,7 +65,7 @@ public class JsonHelperTest extends TestCase {
 
     /**
      * Test of getResults method, of class JsonHelper.
-     */
+     *
     public void testGetResults() {
         System.out.println("getResults");
         String receivedResults = "";
@@ -74,5 +74,5 @@ public class JsonHelperTest extends TestCase {
         Results result = instance.getResults(receivedResults);
         assertEquals(expResult, result);
     }
-
+//*/
 }

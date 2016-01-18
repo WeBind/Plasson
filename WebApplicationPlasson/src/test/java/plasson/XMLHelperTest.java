@@ -32,8 +32,16 @@ public class XMLHelperTest extends TestCase {
     public XMLHelperTest(String testName) {
         super(testName);
          dir = System.getProperty("user.dir");
-         xmlPath = dir + "\\src\\main\\java\\plasson\\XMLTest.xml";
-         xsdPath = dir + "\\src\\main\\java\\plasson\\XSDModel.xsd";
+         if(System.getProperty("os.name").toLowerCase().contains("windows".toLowerCase()))
+         {
+             xmlPath = dir + "\\src\\main\\java\\plasson\\XMLTest.xml";
+             xsdPath = dir + "\\src\\main\\java\\plasson\\XSDModel.xsd";
+         }
+         else
+         {
+             xmlPath = dir + "/src/main/java/plasson/XMLTest.xml";
+             xsdPath = dir + "/src/main/java/plasson/XSDModel.xsd";
+         }
     }
 
     @Override

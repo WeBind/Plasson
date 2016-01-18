@@ -38,8 +38,6 @@ public class JsonHelperTest extends TestCase {
         JSONObject expResult = null;
         JSONObject result = instance.getJson(consumer);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -52,8 +50,6 @@ public class JsonHelperTest extends TestCase {
         JSONObject expResult = null;
         JSONObject result = instance.getJson(provider);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -65,8 +61,6 @@ public class JsonHelperTest extends TestCase {
         JSONObject expResult = null;
         JSONObject result = instance.getGoJson();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -79,8 +73,6 @@ public class JsonHelperTest extends TestCase {
         Results expResult = null;
         Results result = instance.getResults(receivedResults);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 }

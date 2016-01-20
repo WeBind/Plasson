@@ -26,7 +26,7 @@
                     <xs:element type="xs:integer" name="id"/>
                     <xs:element type="xs:integer" name="Starting_time"/>
                     <xs:element type="xs:integer" name="Size"/>
-                    <xs:element type="xs:float" name="Frequency"/>
+                    <xs:element type="xs:integer" name="Period"/>
                     <xs:element type="xs:integer" name="Duration"/>
                     <xs:element type="xs:integer" name="Provider"/>
                   </xs:sequence>

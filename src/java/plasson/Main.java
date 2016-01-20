@@ -19,22 +19,25 @@ import org.xml.sax.SAXException;
  *
  * @author Nicolas
  */
-public class Main {
+   public class Main {
 
-//    public static void main(String[] args) throws InterruptedException {
-//        try {
-//            String xmlPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XMLTest.xml";
-//            String xsdPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XSDModel.xsd";
-//            File xmlFile = new File(xmlPath);
-//            String xml = new Scanner(xmlFile).useDelimiter("\\Z").next();
-//            System.out.println(xml);
-//            XMLHelper xmlTester = new XMLHelper();
-//            try {
-//                if (xmlTester.validateXMLString(xsdPath, xml)) {
-//                    System.out.println("VALIDE!!!!! :DDDDD");
-//                    System.out.println("The number of providers is: " + xmlTester.getProvidersCount(xml));
-//                    System.out.println("The number of consumers is: " + xmlTester.getConsumersCount(xml));
-//                    /*Consumer consumer1 = xmlTester.getConsumerAt(xmlPath, 1);
+    public static void main(String[] args) {
+        try {
+
+            //String xmlPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XMLTest.xml";
+            //String xsdPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XSDModel.xsd";
+            String xmlPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\XMLTest.xml";
+            String xsdPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\XSDModel.xsd";
+            File xmlFile = new File(xmlPath);
+            String xml = new Scanner(xmlFile).useDelimiter("\\Z").next();
+           //System.out.println(xml);
+            XMLHelper xmlTester = new XMLHelper();
+            try {
+                if (xmlTester.validateXMLString(xsdPath, xml)) {
+                    System.out.println("VALIDE!!!!! :DDDDD");
+                    System.out.println("The number of providers is: " + xmlTester.getProvidersCount(xml));
+                    System.out.println("The number of consumers is: " + xmlTester.getConsumersCount(xml));
+                    /*Consumer consumer1 = xmlTester.getConsumerAt(xmlPath, 1);
 //                    Consumer consumer2 = xmlTester.getConsumerAt(xmlPath, 2);
 //                    System.out.println("Consumer1="+consumer1.toString());
 //                    System.out.println("Consumer2="+consumer2.toString());
@@ -44,28 +47,58 @@ public class Main {
 //                    System.out.println("Provider2="+provider2.toString());*/
 ////                    System.out.println("Consumers=" + xmlTester.getConsumers(xml));
 ////                    System.out.println("Providers=" + xmlTester.getProviders(xml));
-//                    Controller c = new Controller("ex1", "all", "callback_queue");
-//                    c.fillModel(xml);
-//                    c.deployScenario();
-//                    Thread.sleep(5000);
-//
-//                    c.startScenario();
-//                } else {
-//                    System.out.println("PAS VALIDE¡¡¡¡ DDDDDDDD:");
-//                }
-//            } catch (ParserConfigurationException ex) {
-//                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (SAXException ex) {
-//                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (XPathExpressionException ex) {
-//                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } catch (FileNotFoundException ex) {
-//            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//    }
+                    Controller c = new Controller();
+                    c.fillModel(xml);
+//                  c.deployScenario();
+                    //Thread.sleep(5000);
+                    c.startScenario();
+                    JsonHelper json = new JsonHelper();
+
+                    String consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer18.json";
+                    File consumerResultsFile = new File(consumerResultsPath);
+                    String consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
+                    System.out.println(consumerResults);
+
+
+                    
+                    c.receiveResult(json.getResults(consumerResults));
+
+                    consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer148.json";
+                    consumerResultsFile = new File(consumerResultsPath);
+                    consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
+                    System.out.println(consumerResults);
+
+
+
+                    c.receiveResult(json.getResults(consumerResults));
+
+                    consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer79.json";
+                    consumerResultsFile = new File(consumerResultsPath);
+                    consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
+                    //System.out.println(consumerResults);
+
+
+
+                    //c.receiveResult(json.getResults(consumerResults));
+
+
+
+                } else {
+                    System.out.println("PAS VALIDE¡¡¡¡ DDDDDDDD:");
+                }
+            } catch (ParserConfigurationException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SAXException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (XPathExpressionException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
 
 }

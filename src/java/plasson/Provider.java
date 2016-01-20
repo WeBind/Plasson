@@ -9,11 +9,10 @@ package plasson;
  *
  * @author Nicolas
  */
-public class Provider {
+public class Provider{
     private int id;
     private int responseLength;
     private int responseTime;
-    private Results results;
 
     public Provider(int id, int responseLength, int responseTime) {
         this.id = id;
@@ -22,20 +21,15 @@ public class Provider {
     }
 
     public Provider() {
+        
     }
 
+    @Override
     public String toString(){
 
-        return id+" "+responseLength+" "+responseTime;
+        return this.getId()+" "+responseLength+" "+responseTime;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getResponseLength() {
         return responseLength;
@@ -53,18 +47,12 @@ public class Provider {
         this.responseTime = responseTime;
     }
 
-    public Results getResults() {
-        return results;
+     public int getId() {
+        return id;
     }
 
-    public void setResults(Results results) {
-        this.results = results;
+    public void setId(int id) {
+        this.id = id;
     }
-
-    
-
-
-
-
 
 }

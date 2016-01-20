@@ -24,7 +24,7 @@ public class JsonHelper {
             obj.put("type", "config");
             obj.put("startingTime", consumer.getStartingTime());
             obj.put("size", consumer.getSize());
-            obj.put("frequency", consumer.getFrequency());
+            obj.put("period", consumer.getPeriod());
             obj.put("duration", consumer.getDuration());
             obj.put("provider", consumer.getProvider());
 

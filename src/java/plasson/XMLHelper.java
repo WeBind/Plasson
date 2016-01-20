@@ -71,7 +71,7 @@ public class XMLHelper {
         XPathExpression exprId = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/id/text()");
         XPathExpression exprStartingTime = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Starting_time/text()");
         XPathExpression exprSize = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Size/text()");
-        XPathExpression exprFrequency = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Frequency/text()");
+        XPathExpression exprPeriod = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Period/text()");
         XPathExpression exprDuration = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Duration/text()");
         XPathExpression exprProvider = xpath.compile("/Scenario/Consumers/Consumer["+index+"]/Provider/text()");
 
@@ -87,8 +87,8 @@ public class XMLHelper {
         node = (Node)exprSize.evaluate(doc,XPathConstants.NODE);
         consumer.setSize(Integer.valueOf(node.getNodeValue()));
 
-        node = (Node)exprFrequency.evaluate(doc,XPathConstants.NODE);
-        consumer.setFrequency(Float.valueOf(node.getNodeValue()));
+        node = (Node)exprPeriod.evaluate(doc,XPathConstants.NODE);
+        consumer.setPeriod(Integer.valueOf(node.getNodeValue()));
 
         node = (Node)exprDuration.evaluate(doc,XPathConstants.NODE);
         consumer.setDuration(Integer.valueOf(node.getNodeValue()));
@@ -177,7 +177,7 @@ public class XMLHelper {
 
         for(int i = 1 ; i <= number ; i++){
             Provider provider = this.getProviderAt(xmlPath, i);
-            providers.put("provider"+provider.getId(), provider);
+            providers.put(Config.providerPrefix+provider.getId(), provider);
         }
 
         ProviderReturn result = new ProviderReturn(providers, maxProviderResponseTime);
@@ -196,7 +196,7 @@ public class XMLHelper {
 
         for(int i = 1 ; i <= number ; i++){
             Consumer consumer = this.getConsumerAt(xmlPath, i);
-            consumers.put("consumer"+consumer.getId(), consumer);
+            consumers.put(Config.consumerPrefix+consumer.getId(), consumer);
         }
 
         ConsumerReturn result = new ConsumerReturn(consumers, maxConsumerEndTime);

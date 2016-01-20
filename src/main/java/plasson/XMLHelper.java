@@ -214,7 +214,7 @@ public class XMLHelper {
         return doc;
     }
 
-    public class ConsumerReturn{
+    public static class ConsumerReturn{
         private HashMap<String,Consumer> consumers;
         private int maxConsumerEndTime;
 
@@ -234,7 +234,7 @@ public class XMLHelper {
 
     }
 
-    public class ProviderReturn{
+    public static class ProviderReturn{
         private HashMap<String,Provider> providers;
         private int maxProviderEndTime;
 

@@ -50,15 +50,15 @@ public class JsonHelperTest extends TestCase {
             JsonHelper instance = new JsonHelper();
             JSONObject expResult = new JSONObject();
             expResult.put("type", "config");
-            expResult.put("id", 18);
             expResult.put("startingTime", 1000);
             expResult.put("size", 100);
             expResult.put("period", 1);
             expResult.put("duration", 300);
             expResult.put("provider", "provider0");
             JSONObject result = instance.getJson(consumer);
+            System.out.println(expResult.toString());
             System.out.println(result.toString());
-            assertEquals(expResult, result);
+            assertEquals(expResult.toString(), result.toString());
             
         } catch (JSONException ex) {
             Logger.getLogger(JsonHelperTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +75,6 @@ public class JsonHelperTest extends TestCase {
             JsonHelper instance = new JsonHelper();
             JSONObject expResult = new JSONObject();
             expResult.put("type", "config");
-            expResult.put("id", 1);
             expResult.put("responseLength", 50);
             expResult.put("responseTime", 600);
             JSONObject result = instance.getJson(provider);
@@ -111,7 +110,7 @@ public class JsonHelperTest extends TestCase {
             String consumerResultsPath ="";
             if(System.getProperty("os.name").toLowerCase().contains("windows".toLowerCase()))
          {
-            consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer79.json";
+            consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer148.json";
          }
          else
          {
@@ -126,15 +125,17 @@ public class JsonHelperTest extends TestCase {
             List<Message> sent = new ArrayList();
             sent.add(new Message("consumer18-01",5));
             sent.add(new Message("consumer18-02",10));
-            expResult.setReceived(sent);
+            expResult.setSent(sent);
 
             List<Message> received = new ArrayList();
             received.add(new Message("consumer18-01",11));
             received.add(new Message("consumer18-02",16));
-            expResult.setReceived(sent);
+            expResult.setReceived(received);
 
             Results result = instance.getResults(receivedResults);
-            assertEquals(expResult, result);
+            System.out.println(expResult.toString());
+            System.out.println(result.toString());
+            assertEquals(expResult.toString(), result.toString());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(JsonHelperTest.class.getName()).log(Level.SEVERE, null, ex);
         }

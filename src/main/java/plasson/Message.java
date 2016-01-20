@@ -21,7 +21,13 @@ public class Message {
         this.time = time;
     }
 
+
     public Message() {
+    }
+
+    @Override
+    public String toString(){
+        return id + " " + time;
     }
 
     public String getId() {

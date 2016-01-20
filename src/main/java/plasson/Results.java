@@ -33,6 +33,19 @@ public class Results {
 
     }
 
+    @Override
+    public String toString(){
+        String sentMessages= "";
+        String receivedMessages="";
+        for(int i=0; i<sent.size();i++){
+            sentMessages += " " + sent.get(i).toString();
+        }
+        for(int j=0; j<received.size();j++){
+            receivedMessages += " " + received.get(j).toString();
+        }
+        return id + " " + sentMessages + " " + receivedMessages;
+    }
+
     public String getId() {
         return id;
     }

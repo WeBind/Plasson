@@ -39,12 +39,12 @@ public class XMLHelperTest extends TestCase {
          dir = System.getProperty("user.dir");
          if(System.getProperty("os.name").toLowerCase().contains("windows".toLowerCase()))
          {
-             xmlPath = dir + "\\src\\main\\java\\plasson\\XMLTest.xml";
+             xmlPath = dir + "\\src\\test\\java\\resources\\XMLTest.xml";
              xsdPath = dir + "\\src\\main\\java\\plasson\\XSDModel.xsd";
          }
          else
          {
-             xmlPath = dir + "/src/main/java/plasson/XMLTest.xml";
+             xmlPath = dir + "/src/test/java/resources/XMLTest.xml";
              xsdPath = dir + "/src/main/java/plasson/XSDModel.xsd";
          }
     }

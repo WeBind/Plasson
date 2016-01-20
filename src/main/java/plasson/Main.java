@@ -24,10 +24,22 @@ import org.xml.sax.SAXException;
     public static void main(String[] args) {
         try {
 
-            //String xmlPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XMLTest.xml";
-            //String xsdPath = "/home/magicmicky/LinuxData/Cours/5A/pdl/PlassonWebApp/src/java/plasson/XSDModel.xsd";
-            String xmlPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\XMLTest.xml";
-            String xsdPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\XSDModel.xsd";
+         final String dir;
+         String xmlPath;
+         String xsdPath;
+
+         dir = System.getProperty("user.dir");
+         if(System.getProperty("os.name").toLowerCase().contains("windows".toLowerCase()))
+         {
+             xmlPath = dir + "\\src\\test\\java\\resources\\XMLTest.xml";
+             xsdPath = dir + "\\src\\main\\java\\plasson\\XSDModel.xsd";
+         }
+         else
+         {
+             xmlPath = dir + "/src/test/java/resources/XMLTest.xml";
+             xsdPath = dir + "/src/main/java/plasson/XSDModel.xsd";
+         }
+            
             File xmlFile = new File(xmlPath);
             String xml = new Scanner(xmlFile).useDelimiter("\\Z").next();
            //System.out.println(xml);
@@ -54,7 +66,7 @@ import org.xml.sax.SAXException;
                     c.startScenario();
                     JsonHelper json = new JsonHelper();
 
-                    String consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer18.json";
+                    String consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer18.json";
                     File consumerResultsFile = new File(consumerResultsPath);
                     String consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
                     System.out.println(consumerResults);
@@ -63,7 +75,7 @@ import org.xml.sax.SAXException;
                     
                     c.receiveResult(json.getResults(consumerResults));
 
-                    consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer148.json";
+                    consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer148.json";
                     consumerResultsFile = new File(consumerResultsPath);
                     consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
                     System.out.println(consumerResults);
@@ -72,7 +84,7 @@ import org.xml.sax.SAXException;
 
                     c.receiveResult(json.getResults(consumerResults));
 
-                    consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer79.json";
+                    consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer79.json";
                     consumerResultsFile = new File(consumerResultsPath);
                     consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
                     System.out.println(consumerResults);

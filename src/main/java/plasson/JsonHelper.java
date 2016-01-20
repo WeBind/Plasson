@@ -30,7 +30,7 @@ public class JsonHelper {
             obj.put("size", consumer.getSize());
             obj.put("period", consumer.getPeriod());
             obj.put("duration", consumer.getDuration());
-            obj.put("provider", consumer.getProvider());
+            obj.put("provider", Config.providerPrefix+consumer.getProvider());
 
         } catch (JSONException ex) {
             Logger.getLogger(JsonHelper.class.getName()).log(Level.SEVERE, null, ex);

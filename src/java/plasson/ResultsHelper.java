@@ -48,8 +48,20 @@ public class ResultsHelper {
             responseTime = responseTime/((float)consumerCounter);
 
         return responseTime;
+    }
 
+    public int getTotalSentMessages(HashMap<String,Consumer> consumers){
 
+        int sentMessages = 0;
+        for(String key : consumers.keySet()){
+           Consumer consumer = consumers.get(key);
+           if(consumer.getResults()!=null){
+               sentMessages += (consumer.getResults().getSent().size()
+                   +consumer.getResults().getReceived().size());
+           }
+        }
+
+        return sentMessages;
     }
 
     // From a result computes lost resquests and the average Request Response Time

@@ -153,6 +153,8 @@ public class Controller implements BrokerHelper.BrokerListener{
         ResultsHelper rh = new ResultsHelper();
         System.out.println("Drop rate = "+rh.getDropRate(Model.getInstance().getConsumers()));
         System.out.println("Average response time = "+rh.getResponseTime(Model.getInstance().getConsumers()));
+        System.out.println("Total sent messages = "+rh.getTotalSentMessages(Model.getInstance().getConsumers()));
+
 
     }
 

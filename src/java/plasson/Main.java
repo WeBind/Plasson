@@ -75,11 +75,11 @@ import org.xml.sax.SAXException;
                     consumerResultsPath = "C:\\Users\\Nicolas\\Documents\\NetBeansProjects\\WebApplicationPlasson\\src\\java\\plasson\\testConsumer79.json";
                     consumerResultsFile = new File(consumerResultsPath);
                     consumerResults = new Scanner(consumerResultsFile).useDelimiter("\\Z").next();
-                    //System.out.println(consumerResults);
+                    System.out.println(consumerResults);
 
 
 
-                    //c.receiveResult(json.getResults(consumerResults));
+                    c.receiveResult(json.getResults(consumerResults));
 
 
 

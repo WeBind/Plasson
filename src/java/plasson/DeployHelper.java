@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 
 /**
  * @author Nicolas
+ *
+ * It makes easier the deployments of consumers and providers
  */
 public class DeployHelper {
     private final String PROD_DEPLOY_PATH="/opt/Plasson/deploy_producer.sh";

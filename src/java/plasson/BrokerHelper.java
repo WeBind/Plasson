@@ -13,6 +13,9 @@ import java.util.concurrent.TimeoutException;
 /**
  *
  * @author Nicolas
+ *
+ * BrokerHelper makes easier the connection with rabbitMQ
+ *
  */
 public class BrokerHelper {
 
@@ -29,6 +32,7 @@ public class BrokerHelper {
         CALLBACK_NAME = callback;
         myListener = listener;
     }
+
 
     public void connect() throws IOException{
         try{

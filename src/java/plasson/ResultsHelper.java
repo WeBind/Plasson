@@ -10,9 +10,11 @@ import java.util.HashMap;
 /**
  *
  * @author Nicolas
+ * Computes results
  */
 public class ResultsHelper {
 
+    // From a consumers list, returns drop rate
     public float getDropRate(HashMap<String,Consumer> consumers){
 
         float dropRate = 0.0f;
@@ -31,6 +33,7 @@ public class ResultsHelper {
 
     }
 
+    // From a consumers list, returns average response time
     public float getResponseTime(HashMap<String,Consumer> consumers){
 
         float responseTime = 0.0f;
@@ -49,7 +52,8 @@ public class ResultsHelper {
 
     }
 
-    public ComputedResults computeConsumerResults(Consumer consumer, int providerResponseTime){
+    // From a result computes lost resquests and the average Request Response Time
+    public ComputedResults computeConsumerResults(Results results, int providerResponseTime){
 
         int lostRequest = 0;
         float averageRequestResponseTime = 0.0f;
@@ -57,9 +61,9 @@ public class ResultsHelper {
 
         Message sentMessage = null;
 
-        for(int i = 0 ; i<consumer.getResults().getSent().size() ; i++){
-            sentMessage = consumer.getResults().getSent().get(i);
-            Message receivedByConsumer = consumer.getReceivedById(sentMessage.getId());
+        for(int i = 0 ; i<results.getSent().size() ; i++){
+            sentMessage = results.getSent().get(i);
+            Message receivedByConsumer = results.getReceivedById(sentMessage.getId());
 
             if(receivedByConsumer == null){
                 lostRequest++;
@@ -69,7 +73,7 @@ public class ResultsHelper {
 
         }
         
-        averageRequestResponseTime = (averageRequestResponseTime/((float)(consumer.getResults().getSent().size()-lostRequest)))-providerResponseTime;
+        averageRequestResponseTime = (averageRequestResponseTime/((float)(results.getSent().size()-lostRequest)))-providerResponseTime;
 
         System.out.println("lostRequest = "+lostRequest);
         System.out.println("averageRequestResponseTime = "+averageRequestResponseTime);
@@ -78,6 +82,8 @@ public class ResultsHelper {
         return  new ComputedResults(lostRequest,averageRequestResponseTime);
     }
 
+
+    // Class to make esier the computed results return
     public class ComputedResults{
         private int lostRequest;
         private float averageRequestResponseTime;
@@ -86,8 +92,6 @@ public class ResultsHelper {
             this.lostRequest = lostRequest;
             this.averageRequestResponseTime = averageRequestResponseTime;
         }
-
-
 
         public float getAverageRequestResponseTime() {
             return averageRequestResponseTime;

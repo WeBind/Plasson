@@ -15,9 +15,13 @@ import com.google.gson.Gson;
 /**
  *
  * @author Nicolas
+ *
+ * Helps to create configuration messages to send to the consumers and providers
+ * Creates a Results object from received results
  */
 public class JsonHelper {
 
+    // Creates JsonObject from a consumer
     public JSONObject getJson(Consumer consumer){
         JSONObject obj = new JSONObject();
         try {
@@ -34,6 +38,7 @@ public class JsonHelper {
         return obj;  
     }
 
+    // Creates JsonObject from a provider
     public JSONObject getJson(Provider provider){
         JSONObject obj = new JSONObject();
         try {
@@ -46,6 +51,7 @@ public class JsonHelper {
         return obj;
     }
 
+    // Return the "go" message to start a scenario
     public JSONObject getGoJson(){
         JSONObject obj = new JSONObject();
         try {
@@ -57,6 +63,7 @@ public class JsonHelper {
     }
 
 
+    // From received Results, creates a results objets
     public Results getResults(String receivedResults){
         
         Gson g = new Gson();

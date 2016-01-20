@@ -10,11 +10,17 @@ import java.util.List;
 /**
  *
  * @author Nicolas
+ *
+ * Results sent by consumers
+ *
  */
 public class Results {
 
+    // COnsumer's id
     private String id;
+    // list of the sent messages
     private List<Message> sent;
+    // list of the received messages
     private List<Message> received;
 
     public Results(String id, List<Message> sent, List<Message> received) {
@@ -51,6 +57,22 @@ public class Results {
         this.sent = sent;
     }
 
+
+    public Message getReceivedById(String messageID){
+
+        boolean hasReceived = false;
+        Message receivedMessage = null;
+        int i = 0;
+        while(!hasReceived && i<getReceived().size()){
+            if(getReceived().get(i).getId().equals(messageID)){
+                hasReceived = true;
+                receivedMessage = getReceived().get(i);
+            }
+            i++;
+        }
+
+        return receivedMessage;
+    }
 
 
 

@@ -11,6 +11,10 @@ import java.util.HashMap;
 /**
  *
  * @author Nicolas
+ *
+ * Singleton which stores the providers and consumers lists
+ * It also stores the scenario duration inorder to set the timeout
+ *
  */
 public final class Model {
 

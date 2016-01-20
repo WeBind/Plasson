@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package plasson;
 
 import java.io.IOException;
@@ -23,6 +18,10 @@ import plasson.ResultsHelper.ComputedResults;
 /**
  *
  * @author Nicolas
+ *
+ * This class is the controller
+ * It does the link between the rest API and the model.
+ *
  */
 public class Controller implements BrokerHelper.BrokerListener{
 
@@ -31,12 +30,15 @@ public class Controller implements BrokerHelper.BrokerListener{
     public BrokerHelper myBroker;
 
 
+    // Set up the BrokerHelper with the config
+    // and listen to it implementing receiveResult()
     public Controller(){
         myBroker = new BrokerHelper(Config.exchangeName, Config.broadcastName, Config.callbackName, this);
         scenarioTimeout = new Timer();
 
     }
 
+    // From a xml String fill the model with the different consumers and providers described in the xml.
     public void fillModel(String xml) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException{
 
         XMLHelper xmlHelper = new XMLHelper();
@@ -50,6 +52,8 @@ public class Controller implements BrokerHelper.BrokerListener{
 
     }
 
+    // Go through the consumers and providers list to deploy each consumer
+    // and provider using a deployHelper
     public void deployScenario(){
         DeployHelper deployHelper = new DeployHelper();
         HashMap<String, Consumer> consumers = Model.getInstance().getConsumers();
@@ -65,6 +69,10 @@ public class Controller implements BrokerHelper.BrokerListener{
 
     }
 
+    // Configures each consumer and provider sendind them a json through RabbitMQ
+    // The connection with rabbitMQ is made by the BrokerHelper
+    // Send the start message
+    // Start the scenarioTimeout
     public void startScenario() throws IOException{
 
         JsonHelper jsonBuilder = new JsonHelper();
@@ -85,6 +93,10 @@ public class Controller implements BrokerHelper.BrokerListener{
         startTimeout();
     }
 
+    // Method implemented from the BrokerListener interface
+    // This method is called whenever the broker receive a result
+    // Computes the received results and fills the model
+    // If all the results have been received, it stops the scenario
     public void receiveResult(Results results) {
 
         System.out.println("Got a result for id "+results.getId());
@@ -95,7 +107,7 @@ public class Controller implements BrokerHelper.BrokerListener{
             ResultsHelper resultHelper = new ResultsHelper();
             String idProvider = Config.providerPrefix+consumer.getProvider();
             ComputedResults cr = resultHelper.computeConsumerResults(
-                    consumer,
+                    results,
                     Model.getInstance().getProviders().get(idProvider).getResponseTime());
             consumer.setLostRequests(cr.getLostRequest());
             consumer.setAverageRequestResponseTime(cr.getAverageRequestResponseTime());
@@ -112,7 +124,8 @@ public class Controller implements BrokerHelper.BrokerListener{
 
     }
 
-    public boolean isResultsTotallyReceived(){
+    // Check if all consumers have sent a result
+    private boolean isResultsTotallyReceived(){
         boolean isResultsTotallyReceived = true;
         int i = 0;
         Iterator iter = Model.getInstance().getConsumers().entrySet().iterator();
@@ -132,6 +145,10 @@ public class Controller implements BrokerHelper.BrokerListener{
         return isResultsTotallyReceived;
     }
 
+    // Compute the results once the scenario is done
+    // using a ResultsHelper, it computes :
+    // - Drop rate
+    // - Average response time
     private void computeGlobalResults() {
         ResultsHelper rh = new ResultsHelper();
         System.out.println("Drop rate = "+rh.getDropRate(Model.getInstance().getConsumers()));
@@ -139,6 +156,8 @@ public class Controller implements BrokerHelper.BrokerListener{
 
     }
 
+    // Start the timeout
+    // If the scenario lasts to long, it stop the scenario
     private void startTimeout(){
         System.out.println("Start Timer");
         scenarioTimeout.schedule(new TimerTask() {
@@ -146,9 +165,12 @@ public class Controller implements BrokerHelper.BrokerListener{
         public void run() {
             stopScenario();
         }
-        }, 15*1000);
+        }, Model.getInstance().getScenarioEndTime()+10000);
     }
 
+    // Stops the timeout
+    // Closes RabbitMQ connection
+    // Computes results 
     private void stopScenario(){
         try {
             System.out.println("Stop scenario");
@@ -160,6 +182,7 @@ public class Controller implements BrokerHelper.BrokerListener{
         }
     }
 
+    // Stop the timeout
     private void stopTimeout(){
         scenarioTimeout.cancel();
     }

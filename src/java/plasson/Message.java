@@ -8,6 +8,8 @@ package plasson;
 /**
  *
  * @author Nicolas
+ *
+ * Message sent has result by consumers
  */
 public class Message {
 

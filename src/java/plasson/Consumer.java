@@ -105,21 +105,7 @@ public class Consumer{
 
 
 
-    public Message getReceivedById(String messageID){
-
-        boolean hasReceived = false;
-        Message receivedMessage = null;
-        int i = 0;
-        while(!hasReceived && i<this.getResults().getReceived().size()){
-            if(this.getResults().getReceived().get(i).getId().equals(messageID)){
-                hasReceived = true;
-                receivedMessage = this.getResults().getReceived().get(i);
-            }
-            i++;
-        }
-
-        return receivedMessage;
-    }
+    
 
     public float getAverageRequestResponseTime() {
         return averageRequestResponseTime;

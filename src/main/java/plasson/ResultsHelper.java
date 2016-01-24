@@ -96,7 +96,7 @@ public class ResultsHelper {
 
 
     // Class to make esier the computed results return
-    public class ComputedResults{
+    public static class ComputedResults{
         private int lostRequest;
         private float averageRequestResponseTime;
 
@@ -105,6 +105,10 @@ public class ResultsHelper {
             this.averageRequestResponseTime = averageRequestResponseTime;
         }
 
+        @Override
+        public String toString(){
+            return "" + this.lostRequest + " " +this.averageRequestResponseTime;
+        }
         public float getAverageRequestResponseTime() {
             return averageRequestResponseTime;
         }

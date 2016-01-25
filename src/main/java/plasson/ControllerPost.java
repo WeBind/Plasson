@@ -91,7 +91,7 @@ public class ControllerPost {
     // The connection with rabbitMQ is made by the BrokerHelper
     // Send the start message
     // Start the scenarioTimeout
-    public void startScenario() throws IOException {
+    public void startScenario() throws IOException, InterruptedException {
 
         JsonHelper jsonBuilder = new JsonHelper();
         lg.log(Level.INFO, "Connecting to RMQ");
@@ -110,7 +110,8 @@ public class ControllerPost {
             lg.log(Level.INFO, "Sending config to " + providerId);
             myBroker.send(jsonBuilder.getJson(providers.get(providerId)).toString(), providerId);
         }
-
+        lg.log(Level.INFO, "Waiting 10sec");
+        Thread.sleep(10000);
         lg.log(Level.INFO, "Broadcasting GO");
         myBroker.sendBroadcast(jsonBuilder.getGoJson().toString());
         lg.log(Level.INFO, "Closing RMQ");

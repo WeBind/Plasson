@@ -32,10 +32,10 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
 
 
 
-    public ControllerGet(WebServiceContext svcCtx) throws EmptyContextException{
+    public ControllerGet(ServletContext svcCtx) throws EmptyContextException{
         //NULL because no one wants to listen results for now
         myBroker = new BrokerHelper(Config.exchangeName, Config.broadcastName, Config.callbackName, this);
-        myContext = ((ServletContext) svcCtx.getMessageContext());
+        myContext = svcCtx;
         if (myContext.getAttribute(contextName) != null) {
             myModel = (Model) myContext.getAttribute(contextName);
         } else {

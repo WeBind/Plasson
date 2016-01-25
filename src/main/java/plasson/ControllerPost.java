@@ -37,11 +37,11 @@ public class ControllerPost {
 
     // Set up the BrokerHelper with the config
     // and listen to it implementing receiveResult()
-    public ControllerPost(WebServiceContext svcCtx) {
+    public ControllerPost(ServletContext sc) {
         //NULL because no one wants to listen results for now
         myBroker = new BrokerHelper(Config.exchangeName, Config.broadcastName, Config.callbackName, null);
         scenarioTimeout = new Timer();
-        myContext = ((ServletContext) svcCtx.getMessageContext());
+        myContext = sc;
         if (myContext.getAttribute(contextName) != null) {
             myModel = (Model) myContext.getAttribute(contextName);
         } else {

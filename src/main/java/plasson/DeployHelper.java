@@ -29,11 +29,8 @@ public class DeployHelper {
         }
         try {
             Process p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast, callback).start();
-            p.waitFor();
         } catch (IOException ex) {
             Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 

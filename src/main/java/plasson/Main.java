@@ -21,7 +21,12 @@ import org.xml.sax.SAXException;
  */
    public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+       
+        
+      //  XMLHelper xmlTester = new XMLHelper();
+
         try {
 
          final String dir;
@@ -39,7 +44,7 @@ import org.xml.sax.SAXException;
              xmlPath = dir + "/src/test/java/resources/XMLTest.xml";
              xsdPath = dir + "/src/main/java/plasson/XSDModel.xsd";
          }
-            
+
             File xmlFile = new File(xmlPath);
             String xml = new Scanner(xmlFile).useDelimiter("\\Z").next();
            //System.out.println(xml);
@@ -72,7 +77,7 @@ import org.xml.sax.SAXException;
                     System.out.println(consumerResults);
 
 
-                    
+
                     c.receiveResult(json.getResults(consumerResults));
 
                     consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer148.json";
@@ -94,6 +99,15 @@ import org.xml.sax.SAXException;
                     c.receiveResult(json.getResults(consumerResults));
 
 
+                    Thread.sleep(5000);
+
+                    Timeline timeline = new Timeline(10,30);
+                    timeline.setIntervalsRates(Model.getInstance().getConsumers(), Model.getInstance().getProviders());
+                    timeline.display();
+
+                    System.out.println( xmlTester.writeTimelineToXML(timeline) );
+
+
 
                 } else {
                     System.out.println("PAS VALIDE¡¡¡¡ DDDDDDDD:");
@@ -106,7 +120,7 @@ import org.xml.sax.SAXException;
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             } catch (XPathExpressionException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }

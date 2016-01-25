@@ -95,7 +95,7 @@ public class ResultsHelper {
     }
 
 
-    // Class to make esier the computed results return
+    // Class to make easier the computed results return
     public static class ComputedResults{
         private int lostRequest;
         private float averageRequestResponseTime;

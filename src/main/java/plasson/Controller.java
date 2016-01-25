@@ -179,6 +179,7 @@ public class Controller implements BrokerHelper.BrokerListener{
             stopTimeout();
             myBroker.close();
             computeGlobalResults();
+            setTimeline();
         } catch (IOException ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -187,6 +188,13 @@ public class Controller implements BrokerHelper.BrokerListener{
     // Stop the timeout
     private void stopTimeout(){
         scenarioTimeout.cancel();
+    }
+
+    public void setTimeline(){
+        //TODO change 30 to scenario end time
+        Timeline timeline = new Timeline(10,30);
+        timeline.setIntervalsRates(Model.getInstance().getConsumers(), Model.getInstance().getProviders());
+        timeline.display();
     }
 
 

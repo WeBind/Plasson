@@ -77,7 +77,7 @@ public class Results {
         Message receivedMessage = null;
         int i = 0;
         while(!hasReceived && i<getReceived().size()){
-            if(getReceived().get(i).getId().equals(messageID)){
+            if(getReceived().get(i).getId().equals(messageID)&&getReceived().get(i).getTime()!=-1){
                 hasReceived = true;
                 receivedMessage = getReceived().get(i);
             }

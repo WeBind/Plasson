@@ -61,7 +61,7 @@ public class Timeline {
         this.intervals = intervals;
     }
 
-    public void setIntervalsRates(HashMap<String,Consumer> consumers, HashMap<String,Provider> providers){
+    public void setIntervalsConsumersRates(HashMap<String,Consumer> consumers, HashMap<String,Provider> providers){
 
         for( String key : consumers.keySet()){
             Consumer consumer = consumers.get(key);
@@ -124,6 +124,22 @@ public class Timeline {
 
                     }
                 }
+    }
+
+    //TODO Global requests
+    private void setGlobalRates(){
+        for( int i = 0 ; i < intervals.length ; i++ ){
+            intervals[i].getIntervalResults().setAverageResponseTime(0.0f);
+            intervals[i].getIntervalResults().setLostRequests(0.0f);
+            intervals[i].getIntervalResults().setTotalMessage(0.0f);
+
+            for ( String key : intervals[i].getConsumersResults().keySet()){
+                intervals[i].getIntervalResults().setLostRequests(
+                        intervals[i].getIntervalResults().getLostRequests()
+                        +intervals[i].getConsumersResults().get(key).getLostRequests());
+            }
+        }
+
     }
 
     public void display(){

@@ -8,6 +8,7 @@ package plasson;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -17,6 +18,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.ws.WebServiceContext;
 import javax.xml.xpath.XPathExpressionException;
 import org.xml.sax.SAXException;
 
@@ -28,6 +30,10 @@ import org.xml.sax.SAXException;
 
 @Path("")
 public class GenericResource {
+
+    @Resource
+    private WebServiceContext svcCtx;
+
     @Context
     private UriInfo context;
 
@@ -54,13 +60,29 @@ public class GenericResource {
     @POST
     @Consumes("application/xml")
     public void postXml(String content) throws InterruptedException {
-        /*try {
+        try {
+            /*try {
             Controller controller = new Controller("plassonOrder", "all", "callback_queue");
             controller.fillModel(content);
             controller.deployScenario();
             Thread.sleep(5000);
             controller.startScenario();
-
+            } catch (ParserConfigurationException ex) {
+            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SAXException ex) {
+            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (XPathExpressionException ex) {
+            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+            System.out.println("[REST API] POST: " + content);
+            ControllerPost c = new ControllerPost(svcCtx);
+            c.fillModel(content);
+            c.saveContext();
+            c.deployScenario();
+            Thread.sleep(5000);
+            c.startScenario();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -69,8 +91,7 @@ public class GenericResource {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
         } catch (XPathExpressionException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
 
-        System.out.println("[REST API] POST: "+content);
     }
 }

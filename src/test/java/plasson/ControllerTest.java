@@ -33,7 +33,7 @@ public class ControllerTest extends TestCase {
     public void testFillModel() throws Exception {
         System.out.println("fillModel");
         String xml = "";
-        Controller instance = new Controller();
+        ControllerPost instance = new ControllerPost();
         instance.fillModel(xml);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -44,7 +44,7 @@ public class ControllerTest extends TestCase {
      */
     public void testDeployScenario() {
         System.out.println("deployScenario");
-        Controller instance = new Controller();
+        ControllerPost instance = new ControllerPost();
         instance.deployScenario();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -55,7 +55,7 @@ public class ControllerTest extends TestCase {
      */
     public void testStartScenario() throws Exception {
         System.out.println("startScenario");
-        Controller instance = new Controller();
+        ControllerPost instance = new ControllerPost();
         instance.startScenario();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -67,7 +67,7 @@ public class ControllerTest extends TestCase {
     public void testReceiveResult() {
         System.out.println("receiveResult");
         Results results = null;
-        Controller instance = new Controller();
+        ControllerPost instance = new ControllerPost();
         instance.receiveResult(results);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

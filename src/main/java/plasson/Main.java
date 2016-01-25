@@ -15,6 +15,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 import org.xml.sax.SAXException;
 
+
 /**
  *
  * @author Nicolas
@@ -59,11 +60,11 @@ import org.xml.sax.SAXException;
 //                    System.out.println("Provider2="+provider2.toString());*/
 ////                    System.out.println("Consumers=" + xmlTester.getConsumers(xml));
 ////                    System.out.println("Providers=" + xmlTester.getProviders(xml));
-                    Controller c = new Controller();
-                    c.fillModel(xml);
+//                    ControllerPost c = new ControllerPost();
+//                    c.fillModel(xml);
 //                  c.deployScenario();
                     //Thread.sleep(5000);
-                    c.startScenario();
+//                    c.startScenario();
                     JsonHelper json = new JsonHelper();
 
                     String consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer18.json";
@@ -73,7 +74,7 @@ import org.xml.sax.SAXException;
 
 
                     
-                    c.receiveResult(json.getResults(consumerResults));
+//                    c.receiveResult(json.getResults(consumerResults));
 
                     consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer148.json";
                     consumerResultsFile = new File(consumerResultsPath);
@@ -82,7 +83,7 @@ import org.xml.sax.SAXException;
 
 
 
-                    c.receiveResult(json.getResults(consumerResults));
+//                    c.receiveResult(json.getResults(consumerResults));
 
                     consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer79.json";
                     consumerResultsFile = new File(consumerResultsPath);
@@ -91,7 +92,7 @@ import org.xml.sax.SAXException;
 
 
 
-                    c.receiveResult(json.getResults(consumerResults));
+//                    c.receiveResult(json.getResults(consumerResults));
 
 
 

@@ -59,6 +59,10 @@ public class BrokerHelper {
         try {
             //Non-persistant queue
             channel.queueDeclare(CALLBACK_NAME, false, false, false, null);
+
+            //Send a stop message
+            channel.basicPublish("", CALLBACK_NAME, null, Config.endMessage.getBytes());
+            
             channel.basicConsume(CALLBACK_NAME,true,getQueueConsumer());
             System.out.println("Plasson : ready to receive results");
         } catch (IOException e) {

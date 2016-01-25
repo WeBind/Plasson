@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  * It makes easier the deployments of consumers and providers
  */
 public class DeployHelper {
-    private final String PROD_DEPLOY_PATH="/opt/Plasson/deploy_producer.sh";
-    private final String CONS_DEPLOY_PATH="/opt/Plasson/deploy_consumer.sh";
+    private final String PROD_DEPLOY_PATH="/opt/Plasson/petals/producers/deploy_producer.sh";
+    private final String CONS_DEPLOY_PATH="/opt/Plasson/petals/consumers/deploy_consumer.sh";
     //TODO ajouter la technologie
     public void deployConsumer(String name, String exchangeName, String broadcast, String callback){
 //        try {

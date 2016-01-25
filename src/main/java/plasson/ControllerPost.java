@@ -27,6 +27,9 @@ import plasson.ResultsHelper.ComputedResults;
  */
 public class ControllerPost {
 
+    Logger lg = java.util.logging.Logger.getLogger(Config.tag);
+
+
     private final String contextName = Config.contextName;
     private int responseCounter = 0;
     private Timer scenarioTimeout;
@@ -74,9 +77,11 @@ public class ControllerPost {
 
 
         for (String consumerId : consumers.keySet()) {
+            lg.log(Level.INFO, "Deploying " + consumerId);
             deployHelper.deployConsumer(consumerId, Config.exchangeName, Config.broadcastName, Config.callbackName);
         }
         for (String providerId : providers.keySet()) {
+            lg.log(Level.INFO, "Deploying " + providerId);
             deployHelper.deployProvider(providerId, Config.exchangeName, Config.broadcastName, Config.callbackName);
         }
 
@@ -89,6 +94,7 @@ public class ControllerPost {
     public void startScenario() throws IOException {
 
         JsonHelper jsonBuilder = new JsonHelper();
+        lg.log(Level.INFO, "Connecting to RMQ");
         myBroker.connect();
         HashMap<String, Consumer> consumers = myModel.getConsumers();
         HashMap<String, Provider> providers = myModel.getProviders();
@@ -97,13 +103,17 @@ public class ControllerPost {
         //myBroker.setUpCallbackQueue();
 
         for (String consumerId : consumers.keySet()) {
+            lg.log(Level.INFO, "Sending config to " + consumerId);
             myBroker.send(jsonBuilder.getJson(consumers.get(consumerId)).toString(), consumerId);
         }
         for (String providerId : providers.keySet()) {
+            lg.log(Level.INFO, "Sending config to " + providerId);
             myBroker.send(jsonBuilder.getJson(providers.get(providerId)).toString(), providerId);
         }
 
+        lg.log(Level.INFO, "Broadcasting GO");
         myBroker.sendBroadcast(jsonBuilder.getGoJson().toString());
+        lg.log(Level.INFO, "Closing RMQ");
         myBroker.close();
         //TIMEOUT IS DONE BY THE WEBAPP
         //startTimeout();
@@ -111,6 +121,10 @@ public class ControllerPost {
 
     public void saveContext() {
         myContext.setAttribute(contextName, myModel);
+    }
+
+    public String getScenarioEndTimeXML(){
+        return (new XMLHelper()).getEndTimeXML(myModel.getScenarioEndTime());
     }
 
     

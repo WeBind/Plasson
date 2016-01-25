@@ -285,13 +285,13 @@ public class XMLHelper {
                  interval.setAttributeNode(attr);
 
                  // Start element
-                 Element start = doc.createElement("start");
+                 Element start = doc.createElement("Start");
                  start.appendChild(
                  doc.createTextNode(Integer.toString(intervals[i].getStart())));
                  interval.appendChild(start);
 
                  // End element
-                 Element end = doc.createElement("end");
+                 Element end = doc.createElement("End");
                  end.appendChild(
                  doc.createTextNode(Integer.toString(intervals[i].getEnd())));
                  interval.appendChild(end);
@@ -306,19 +306,19 @@ public class XMLHelper {
                     Rates rates = intervals[i].getConsumersResults().get(key);
                     
                         //lost requests element
-                        Element lostReq = doc.createElement("Lost_Requests");
+                        Element lostReq = doc.createElement("LostRequests");
                         lostReq.appendChild(
                         doc.createTextNode( Float.toString(rates.getLostRequests())) );
                         consumer.appendChild(lostReq);
 
                         //total message element
-                        Element totMess = doc.createElement("Total_Messages");
+                        Element totMess = doc.createElement("TotalMessages");
                         totMess.appendChild(
                         doc.createTextNode( Float.toString(rates.getTotalMessage())) );
                         consumer.appendChild(totMess);
 
                         //response time element
-                        Element RespTime = doc.createElement("Response_Time");
+                        Element RespTime = doc.createElement("ResponseTime");
                         RespTime.appendChild(
                         doc.createTextNode( Float.toString(rates.getAverageResponseTime())) );
                         consumer.appendChild(RespTime);
@@ -362,6 +362,41 @@ public class XMLHelper {
           }
 
           return "1";
+    }
+
+    public String getEndTimeXML(int endTime){
+
+        try{
+         DocumentBuilderFactory dbFactory =
+             DocumentBuilderFactory.newInstance();
+             DocumentBuilder dBuilder =
+                dbFactory.newDocumentBuilder();
+             Document doc = dBuilder.newDocument();
+
+             // root element
+             Element rootElement = doc.createElement("endTime");
+             rootElement.appendChild(
+             doc.createTextNode( Integer.toString(endTime) ) );
+             doc.appendChild(rootElement);
+
+
+             // write the content into xml file
+             DOMSource source = new DOMSource(doc);
+
+               // Output to string
+            StringWriter writer = new StringWriter();
+            StreamResult stringResult = new StreamResult(writer);
+            TransformerFactory tFactory = TransformerFactory.newInstance();
+            Transformer transformer2 = tFactory.newTransformer();
+            transformer2.transform(source,stringResult);
+            String strResult = writer.toString();
+            return (strResult);
+
+        } catch (Exception e) {
+             e.printStackTrace();
+       }
+
+             return ("1");
     }
 }
 

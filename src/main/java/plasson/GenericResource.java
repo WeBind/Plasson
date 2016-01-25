@@ -31,6 +31,9 @@ import org.xml.sax.SAXException;
 @Path("/")
 public class GenericResource {
 
+    Logger lg = java.util.logging.Logger.getLogger(Config.tag);
+
+
     @Resource
     private WebServiceContext svcCtx;
 
@@ -50,8 +53,11 @@ public class GenericResource {
     public String getXml() {
 
         String results = null;
+        lg.log(Level.INFO, "[REST API] GET");
+
         try {
             ControllerGet c = new ControllerGet(svcCtx);
+            lg.log(Level.INFO, "Waiting for results");
             results = c.listenToResults();
 
         } catch (EmptyContextException ex) {
@@ -69,30 +75,26 @@ public class GenericResource {
      */
     @POST
     @Consumes("application/xml")
-    public void postXml(String content) throws InterruptedException {
+    public String postXml(String content) throws InterruptedException {
+        
+        String endTime = null;
+
         try {
-            /*try {
-            Controller controller = new Controller("plassonOrder", "all", "callback_queue");
-            controller.fillModel(content);
-            controller.deployScenario();
-            Thread.sleep(5000);
-            controller.startScenario();
-            } catch (ParserConfigurationException ex) {
-            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SAXException ex) {
-            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (XPathExpressionException ex) {
-            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+
+            lg.log(Level.INFO, "[REST API] POST: " + content);
             System.out.println("[REST API] POST: " + content);
             ControllerPost c = new ControllerPost(svcCtx);
+            lg.log(Level.INFO, "Parsing XML");
             c.fillModel(content);
+            lg.log(Level.INFO, "Saving context");
             c.saveContext();
+            lg.log(Level.INFO, "Deploying scenario");
             c.deployScenario();
+            lg.log(Level.INFO, "Sleeping 5s");
             Thread.sleep(5000);
+            lg.log(Level.INFO, "Starting Scenario");
             c.startScenario();
+            endTime = c.getScenarioEndTimeXML();
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
@@ -102,6 +104,10 @@ public class GenericResource {
         } catch (XPathExpressionException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        System.out.println("[REST API] SENDING : " + endTime);
+        return endTime;
+
 
     }
 }

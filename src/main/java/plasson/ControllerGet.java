@@ -22,6 +22,10 @@ import plasson.ResultsHelper.ComputedResults;
  */
 public class ControllerGet implements BrokerHelper.BrokerListener{
 
+
+    Logger lg = java.util.logging.Logger.getLogger(Config.tag);
+
+
     private final String contextName = Config.contextName;
     private int responseCounter = 0;
     private ServletContext myContext;
@@ -36,6 +40,7 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
         //NULL because no one wants to listen results for now
         myBroker = new BrokerHelper(Config.exchangeName, Config.broadcastName, Config.callbackName, this);
         myContext = ((ServletContext) svcCtx.getMessageContext());
+        lg.log(Level.INFO, "Getting Context");
         if (myContext.getAttribute(contextName) != null) {
             myModel = (Model) myContext.getAttribute(contextName);
         } else {
@@ -48,7 +53,9 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
 
     public String listenToResults(){
         try {
+            lg.log(Level.INFO, "Connecting to RMQ");
             myBroker.connect();
+            lg.log(Level.INFO, "Setting up queue callback");
             myBroker.setUpCallbackQueue();
         } catch (IOException ex) {
             Logger.getLogger(ControllerGet.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +78,7 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
     public void receiveResult(Results results) {
 
         System.out.println("Got a result for id " + results.getId());
-
+        lg.log(Level.INFO, "Receiving results for "+ results.getId());
         if (myModel.getConsumers().containsKey(results.getId())) {
             Consumer consumer = myModel.getConsumers().get(results.getId());
             consumer.setResults(results);
@@ -89,6 +96,7 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
             //    this.stopScenario();
             //}
         } else {
+            lg.log(Level.INFO, "Error: not found corresponding results");
             System.out.println("Error: not found corresponding results");
 
         }
@@ -150,10 +158,17 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
     private void stopScenario() {
         try {
             System.out.println("Stop scenario");
+            lg.log(Level.INFO, "Stopping Scenario");
+
             //stopTimeout();
+            lg.log(Level.INFO, "Closing RMQ");
+
             myBroker.close();
+            lg.log(Level.INFO, "Computing global results");
             computeGlobalResults();
+            lg.log(Level.INFO, "Computing timeline");
             timelineResults = (new XMLHelper()).writeTimelineToXML(setTimeline());
+            lg.log(Level.INFO, "Cleaning providers");
             cleanup();
         } catch (IOException ex) {
             Logger.getLogger(ControllerPost.class.getName()).log(Level.SEVERE, null, ex);
@@ -186,6 +201,7 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
     }
 
     public void endOfResults() {
+        lg.log(Level.INFO, "End of results");
         stopScenario();
     }
 

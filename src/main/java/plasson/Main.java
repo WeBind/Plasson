@@ -26,7 +26,6 @@ import org.xml.sax.SAXException;
 
        
         
-      //  XMLHelper xmlTester = new XMLHelper();
 
         try {
 
@@ -109,6 +108,8 @@ import org.xml.sax.SAXException;
                     timeline.display();
 
                     System.out.println( xmlTester.writeTimelineToXML(timeline) );
+
+                    System.out.println( xmlTester.getEndTimeXML(2) );
 
 
 

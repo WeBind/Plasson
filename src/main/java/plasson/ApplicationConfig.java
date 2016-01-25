@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by magicmicky on 15/01/16.
  */
-@javax.ws.rs.ApplicationPath("plasson")
+@javax.ws.rs.ApplicationPath("/plasson")
 public class ApplicationConfig extends Application {
 
     @Override

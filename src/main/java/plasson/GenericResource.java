@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
@@ -31,11 +32,12 @@ import org.xml.sax.SAXException;
 @Path("/")
 public class GenericResource {
 
+
     Logger lg = java.util.logging.Logger.getLogger(Config.tag);
 
-
-    @Resource
-    private WebServiceContext svcCtx;
+    
+    @Context
+    private ServletContext sc;
 
     @Context
     private UriInfo context;
@@ -56,8 +58,10 @@ public class GenericResource {
         lg.log(Level.INFO, "[REST API] GET");
 
         try {
-            ControllerGet c = new ControllerGet(svcCtx);
-            lg.log(Level.INFO, "Waiting for results");
+
+        ControllerGet c = new ControllerGet(sc);
+
+        lg.log(Level.INFO, "Waiting for results");
             results = c.listenToResults();
 
         } catch (EmptyContextException ex) {
@@ -83,8 +87,11 @@ public class GenericResource {
 
             lg.log(Level.INFO, "[REST API] POST: " + content);
             System.out.println("[REST API] POST: " + content);
-            ControllerPost c = new ControllerPost(svcCtx);
-            lg.log(Level.INFO, "Parsing XML");
+
+            ControllerPost c = new ControllerPost(sc);
+
+                    lg.log(Level.INFO, "Parsing XML");
+
             c.fillModel(content);
             lg.log(Level.INFO, "Saving context");
             c.saveContext();

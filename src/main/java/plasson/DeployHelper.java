@@ -20,11 +20,21 @@ public class DeployHelper {
     private final String CONS_DEPLOY_PATH="/opt/Plasson/petals/consumers/deploy_consumer.sh";
     //TODO ajouter la technologie
     public void deployConsumer(String name, String exchangeName, String broadcast, String callback){
-//        try {
-////            new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast).start();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        System.out.println("Deploying " + name +  " " + exchangeName + " " + broadcast);
+        File f = new File("/tmp/" + name +  ".omg");
+        try {
+            f.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Process p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast).start();
+            p.waitFor();
+        } catch (IOException ex) {
+            Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void deployProvider(String name, String exchangeName, String broadcast, String callback){

@@ -22,13 +22,19 @@ public class DeployHelper {
     public void deployConsumer(String name, String exchangeName, String broadcast, String callback){
         System.out.println("Deploying " + name +  " " + exchangeName + " " + broadcast);
         File f = new File("/tmp/" + name +  ".omg");
+        File f2 = new File("/tmp/" + name + ".err.omg");
         try {
             f.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            Process p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast, callback).start();
+            f2.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Process p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast, callback).redirectOutput(f).redirectError(f2).start();
         } catch (IOException ex) {
             Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -37,14 +43,21 @@ public class DeployHelper {
     public void deployProvider(String name, String exchangeName, String broadcast, String callback){
         System.out.println("Deploying " + name +  " " + exchangeName + " " + broadcast);
         File f = new File("/tmp/" + name +  ".omg");
+        File f2 = new File("/tmp/" + name + ".err.omg");
         try {
             f.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
-            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).start();
+            f2.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).redirectOutput(f).redirectError(f2).start();
             p.waitFor();
+
         } catch (IOException ex) {
             Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InterruptedException e) {

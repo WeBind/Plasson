@@ -28,7 +28,7 @@ import org.xml.sax.SAXException;
  * @author Nicolas
  */
 
-@Path("")
+@Path("/")
 public class GenericResource {
 
     @Resource

@@ -78,13 +78,10 @@ import org.xml.sax.SAXException;
                     System.out.println(consumerResults);
 
 
-<<<<<<< HEAD
+
                     
 //                    c.receiveResult(json.getResults(consumerResults));
-=======
 
-                    c.receiveResult(json.getResults(consumerResults));
->>>>>>> 10ed3d101c27a742241cf33e7b168165ce60bc95
 
                     consumerResultsPath = dir + "\\src\\test\\java\\resources\\testConsumer148.json";
                     consumerResultsFile = new File(consumerResultsPath);
@@ -108,7 +105,7 @@ import org.xml.sax.SAXException;
                     Thread.sleep(5000);
 
                     Timeline timeline = new Timeline(10,30);
-                    timeline.setIntervalsRates(Model.getInstance().getConsumers(), Model.getInstance().getProviders());
+//                    timeline.setIntervalsRates(Model.getInstance().getConsumers(), Model.getInstance().getProviders());
                     timeline.display();
 
                     System.out.println( xmlTester.writeTimelineToXML(timeline) );

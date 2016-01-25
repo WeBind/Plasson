@@ -48,8 +48,18 @@ public class GenericResource {
     @GET
     @Produces("application/xml")
     public String getXml() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+
+        String results = null;
+        try {
+            ControllerGet c = new ControllerGet(svcCtx);
+            results = c.listenToResults();
+
+        } catch (EmptyContextException ex) {
+            Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            return results;
+
     }
 
     /**

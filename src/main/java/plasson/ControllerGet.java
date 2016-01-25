@@ -153,7 +153,7 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
             //stopTimeout();
             myBroker.close();
             computeGlobalResults();
-            timelineResults = setTimeline().toString();
+            timelineResults = (new XMLHelper()).writeTimelineToXML(setTimeline());
             cleanup();
         } catch (IOException ex) {
             Logger.getLogger(ControllerPost.class.getName()).log(Level.SEVERE, null, ex);

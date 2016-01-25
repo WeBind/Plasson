@@ -79,8 +79,12 @@ public class BrokerHelper {
                 String message = new String(body, "UTF-8");
                 //TODO : ajouter ici le traitement des résultats
                 System.out.println(" [x] Received results'" + message + "'");
-                JsonHelper jsonHelper = new JsonHelper();
-                myListener.receiveResult(jsonHelper.getResults(message));
+                if(message.equals(Config.endMessage)){
+                    myListener.endOfResults();
+                }else{
+                    JsonHelper jsonHelper = new JsonHelper();
+                    myListener.receiveResult(jsonHelper.getResults(message));
+                }
             }
         };
         return  consumer;
@@ -97,6 +101,7 @@ public class BrokerHelper {
     
     public interface BrokerListener{
         public void receiveResult(Results results);
+        public void endOfResults();
     }
 
 

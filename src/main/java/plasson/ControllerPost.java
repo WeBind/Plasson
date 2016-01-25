@@ -33,7 +33,7 @@ public class ControllerPost {
     private BrokerHelper myBroker;
     private ServletContext myContext;
     private Model myModel;
-    private final String CLEAN_UP_PATH = "/opt/Plasson/petals/cleanup.sh";
+    
 
     // Set up the BrokerHelper with the config
     // and listen to it implementing receiveResult()

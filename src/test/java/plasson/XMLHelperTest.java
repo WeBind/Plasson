@@ -403,7 +403,7 @@ public class XMLHelperTest extends TestCase {
     }
 
      /**
-     * Test of writeTimelineToXML method, of class XMLHelper. This test also verifies that IDs are generated and retrieved correctly
+     * Test of testGetEndTimeXML method, of class XMLHelper. This test also verifies that IDs are generated and retrieved correctly
      */
     /*TODO add consumers to the timeline*/
     public void testGetEndTimeXML() throws Exception {

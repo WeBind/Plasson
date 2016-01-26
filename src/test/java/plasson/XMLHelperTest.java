@@ -377,4 +377,43 @@ public class XMLHelperTest extends TestCase {
         }
     }
 
+    /**
+     * Test of writeTimelineToXML method, of class XMLHelper. This test also verifies that IDs are generated and retrieved correctly
+     */
+    /*TODO add consumers to the timeline*/
+    public void testWriteTimelineToXML() throws Exception {
+        System.out.println("writeTimelineToXML");
+
+        XMLHelper instance = new XMLHelper();
+        Timeline timeline = new Timeline(10,30);
+        timeline.display();
+        String expResults = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" +
+                            "<Intervals><Interval Number=\"0\"><Start>0</Start><End>3</End>" +
+                            "</Interval><Interval Number=\"1\"><Start>3</Start><End>6</End>" +
+                            "</Interval><Interval Number=\"2\"><Start>6</Start><End>9</End>" +
+                            "</Interval><Interval Number=\"3\"><Start>9</Start><End>12</End>" +
+                            "</Interval><Interval Number=\"4\"><Start>12</Start><End>15</End>" +
+                            "</Interval><Interval Number=\"5\"><Start>15</Start><End>18</End>" +
+                            "</Interval><Interval Number=\"6\"><Start>18</Start><End>21</End>" +
+                            "</Interval><Interval Number=\"7\"><Start>21</Start><End>24</End>" +
+                            "</Interval><Interval Number=\"8\"><Start>24</Start><End>27</End>" +
+                            "</Interval><Interval Number=\"9\"><Start>27</Start><End>30</End></Interval></Intervals>";
+        String result = instance.writeTimelineToXML(timeline);
+        assertEquals(expResults, result);
+    }
+
+     /**
+     * Test of writeTimelineToXML method, of class XMLHelper. This test also verifies that IDs are generated and retrieved correctly
+     */
+    /*TODO add consumers to the timeline*/
+    public void testGetEndTimeXML() throws Exception {
+        System.out.println("getEndTimeXML");
+
+        XMLHelper instance = new XMLHelper();
+        Timeline timeline = new Timeline(10,30);
+        timeline.display();
+        String expResults = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><endTime>2</endTime>";
+        String result = instance.getEndTimeXML(2);
+        assertEquals(expResults, result);
+    }
 }

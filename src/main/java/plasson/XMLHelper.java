@@ -306,9 +306,9 @@ public class XMLHelper {
                     Rates rates = intervals[i].getConsumersResults().get(key);
 
                         //lost requests element
-                        Element consName = doc.createElement(key);
+                        Element consName = doc.createElement("Name");
                         consName.appendChild(
-                        doc.createTextNode( Float.toString(rates.getLostRequests())) );
+                        doc.createTextNode( key ) );
                         consumer.appendChild(consName);
 
                         //lost requests element

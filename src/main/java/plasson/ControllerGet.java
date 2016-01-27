@@ -178,10 +178,8 @@ public class ControllerGet implements BrokerHelper.BrokerListener{
 
 
     public Timeline setTimeline() {
-        //TODO change 30 to scenario end time
         Timeline timeline = new Timeline(10, myModel.getScenarioEndTime());
         timeline.setIntervalsConsumersRates(myModel.getConsumers(), myModel.getProviders());
-        //timeline.display();
 
         return timeline;
     }

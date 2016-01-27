@@ -22,6 +22,13 @@ public class Interval {
         consumersResults = new HashMap<String,Rates>();
     }
 
+    public Interval(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    
+
     public HashMap<String, Rates> getConsumersResults() {
         return consumersResults;
     }

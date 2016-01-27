@@ -33,16 +33,11 @@ public class DeployHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Process p;
         try {
-            p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast).start();
-            p.waitFor();
+            Process p = new ProcessBuilder(CONS_DEPLOY_PATH, name, exchangeName, broadcast, callback).redirectOutput(f).redirectError(f2).start();
         } catch (IOException ex) {
             Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (InterruptedException ex) {
-            Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     public void deployProvider(String name, String exchangeName, String broadcast, String callback){
@@ -59,20 +54,15 @@ public class DeployHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-            Process p;
         try {
-            p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).start();
+            Process p = new ProcessBuilder(PROD_DEPLOY_PATH, name, exchangeName, broadcast).redirectOutput(f).redirectError(f2).start();
             p.waitFor();
+
         } catch (IOException ex) {
             Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
-        }catch (InterruptedException ex) {
-            Logger.getLogger(DeployHelper.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        
-
-        
-        
     }
 
 }

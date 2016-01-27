@@ -274,12 +274,12 @@ public class XMLHelperTest extends TestCase {
                 {
                     //Create expected providers hashmap manually (according to the XMLTest.xml)
                     HashMap<String, Provider> expProviders = new HashMap<String, Provider>();
-                    expProviders.put("provider"+ 0, instance.getProviderAt(xml, 1));
-                    expProviders.put("provider"+ 1, instance.getProviderAt(xml, 2));
-                    expProviders.put("provider"+ 2, instance.getProviderAt(xml, 3));
-                    expProviders.put("provider"+ 3, instance.getProviderAt(xml, 4));
-                    expProviders.put("provider"+ 4, instance.getProviderAt(xml, 5));
-                    expProviders.put("provider"+ 5, instance.getProviderAt(xml, 6));
+                    expProviders.put(Config.providerPrefix+ 0, instance.getProviderAt(xml, 1));
+                    expProviders.put(Config.providerPrefix+ 1, instance.getProviderAt(xml, 2));
+                    expProviders.put(Config.providerPrefix+ 2, instance.getProviderAt(xml, 3));
+                    expProviders.put(Config.providerPrefix+ 3, instance.getProviderAt(xml, 4));
+                    expProviders.put(Config.providerPrefix+ 4, instance.getProviderAt(xml, 5));
+                    expProviders.put(Config.providerPrefix+ 5, instance.getProviderAt(xml, 6));
 
                     //Retrieve values from the manually created hashmaps and the function created objects into hashmaps
                     ProviderReturn expResultProviders = new ProviderReturn(expProviders, 0);
@@ -293,8 +293,8 @@ public class XMLHelperTest extends TestCase {
                     Provider result;
 
                     for(int i=0 ; i < number ; i++){
-                        expResult = expResultHash.get("provider"+ i);
-                        result = (Provider)resultHash.get("provider"+ i);
+                        expResult = expResultHash.get(Config.providerPrefix+ i);
+                        result = (Provider)resultHash.get(Config.providerPrefix+ i);
                         assertEquals(expResult.toString(), result.toString());
                     }
                 }else {
@@ -335,9 +335,9 @@ public class XMLHelperTest extends TestCase {
                 {
                     //Create expected consumers hashmap manually (according to the XMLTest.xml)
                     HashMap<String, Consumer> expConsumers = new HashMap<String, Consumer>();
-                    expConsumers.put("consumer"+ 0, instance.getConsumerAt(xml, 1));
-                    expConsumers.put("consumer"+ 1, instance.getConsumerAt(xml, 2));
-                    expConsumers.put("consumer"+ 2, instance.getConsumerAt(xml, 3));
+                    expConsumers.put(Config.consumerPrefix+ 0, instance.getConsumerAt(xml, 1));
+                    expConsumers.put(Config.consumerPrefix+ 1, instance.getConsumerAt(xml, 2));
+                    expConsumers.put(Config.consumerPrefix+ 2, instance.getConsumerAt(xml, 3));
 
                     //Retrieve values from the manually created hashmaps and the function created objects into hashmaps
                     ConsumerReturn expResultConsumers = new ConsumerReturn(expConsumers, 0);
@@ -351,8 +351,8 @@ public class XMLHelperTest extends TestCase {
                     Consumer result;
 
                     for(int i=0 ; i < number ; i++){
-                        expResult = expResultHash.get("consumer"+ i);
-                        result = (Consumer)resultHash.get("consumer"+ instance.getConsumerAt(xml, i+1).getId());
+                        expResult = expResultHash.get(Config.consumerPrefix+ i);
+                        result = (Consumer)resultHash.get(Config.consumerPrefix+ instance.getConsumerAt(xml, i+1).getId());
                         assertEquals(expResult.toString(), result.toString());
                     }
                 }else {

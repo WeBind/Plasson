@@ -29,6 +29,11 @@ public class Timeline {
         intervals[intervals.length-1].setEnd(scenarioDuration);
     }
 
+    public Timeline(int intervalNumber) {
+        intervals = new Interval[intervalNumber];
+    }
+
+
     public Interval getIntervalContaining(int time){
         Interval interval = null;
         boolean found = false;

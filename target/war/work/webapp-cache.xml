@@ -1,0 +1,44 @@
+<webapp-structure>
+  <registeredFiles>
+    <entry>
+      <string>currentBuild</string>
+      <path-set>
+        <pathsSet class="linked-hash-set">
+          <string>index.jsp</string>
+          <string>WEB-INF/web.xml</string>
+          <string>WEB-INF/classes/plasson/ApplicationConfig.class</string>
+          <string>WEB-INF/classes/plasson/BrokerHelper$1.class</string>
+          <string>WEB-INF/classes/plasson/BrokerHelper$BrokerListener.class</string>
+          <string>WEB-INF/classes/plasson/BrokerHelper.class</string>
+          <string>WEB-INF/classes/plasson/Config.class</string>
+          <string>WEB-INF/classes/plasson/Consumer.class</string>
+          <string>WEB-INF/classes/plasson/ControllerGet.class</string>
+          <string>WEB-INF/classes/plasson/ControllerPost.class</string>
+          <string>WEB-INF/classes/plasson/DeployHelper.class</string>
+          <string>WEB-INF/classes/plasson/EmptyContextException.class</string>
+          <string>WEB-INF/classes/plasson/GenericResource.class</string>
+          <string>WEB-INF/classes/plasson/Interval.class</string>
+          <string>WEB-INF/classes/plasson/JsonHelper.class</string>
+          <string>WEB-INF/classes/plasson/Main.class</string>
+          <string>WEB-INF/classes/plasson/Message.class</string>
+          <string>WEB-INF/classes/plasson/Model.class</string>
+          <string>WEB-INF/classes/plasson/Provider.class</string>
+          <string>WEB-INF/classes/plasson/Rates.class</string>
+          <string>WEB-INF/classes/plasson/Results.class</string>
+          <string>WEB-INF/classes/plasson/ResultsHelper$ComputedResults.class</string>
+          <string>WEB-INF/classes/plasson/ResultsHelper.class</string>
+          <string>WEB-INF/classes/plasson/Timeline.class</string>
+          <string>WEB-INF/classes/plasson/XMLHelper$ConsumerReturn.class</string>
+          <string>WEB-INF/classes/plasson/XMLHelper$ProviderReturn.class</string>
+          <string>WEB-INF/classes/plasson/XMLHelper.class</string>
+          <string>WEB-INF/lib/javax.ws.rs-api-2.0.jar</string>
+          <string>WEB-INF/lib/asm-3.3.1.jar</string>
+          <string>WEB-INF/lib/amqp-client-3.6.0.jar</string>
+          <string>WEB-INF/lib/gson-2.5.jar</string>
+          <string>WEB-INF/lib/jettison-1.3.7.jar</string>
+          <string>WEB-INF/lib/stax-api-1.0.1.jar</string>
+        </pathsSet>
+      </path-set>
+    </entry>
+  </registeredFiles>
+</webapp-structure>

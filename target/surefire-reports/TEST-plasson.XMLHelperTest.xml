@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="1.166" errors="0" skipped="0" tests="8" name="plasson.XMLHelperTest">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="localRepository" value="C:\Users\Nicolas\.m2\repository"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="env.PROMPT" value="$P$G"/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="env.FP_NO_HOST_CHECK" value="NO"/>
+    <property name="sun.boot.class.path" value="C:\glassfish3\jdk\jre\lib\resources.jar;C:\glassfish3\jdk\jre\lib\rt.jar;C:\glassfish3\jdk\jre\lib\sunrsasign.jar;C:\glassfish3\jdk\jre\lib\jsse.jar;C:\glassfish3\jdk\jre\lib\jce.jar;C:\glassfish3\jdk\jre\lib\charsets.jar;C:\glassfish3\jdk\jre\lib\modules\jdk.boot.jar;C:\glassfish3\jdk\jre\classes"/>
+    <property name="env.COMPUTERNAME" value="NICOLAS-PC"/>
+    <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files"/>
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.version" value="1.6.0_38-b05"/>
+    <property name="env.HOMEPATH" value="\Users\Nicolas"/>
+    <property name="user.name" value="Nicolas"/>
+    <property name="nb.show.statistics.ui" value="usageStatisticsEnabled"/>
+    <property name="user.language" value="fr"/>
+    <property name="env.windows_tracing_flags" value="3"/>
+    <property name="sun.boot.library.path" value="C:\glassfish3\jdk\jre\bin"/>
+    <property name="java.version" value="1.6.0_38"/>
+    <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 58 Stepping 9, GenuineIntel"/>
+    <property name="env.ERLANG_HOME" value="C:\Program Files\erl7.1"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="env.TEMP" value="C:\Users\Nicolas\AppData\Local\Temp"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="http.nonProxyHosts" value="localhost|127.0.0.1|Nicolas-PC"/>
+    <property name="java.endorsed.dirs" value="C:\glassfish3\jdk\jre\lib\endorsed"/>
+    <property name="com.sun.aas.installRoot" value="C:\GlassFishESBv22\glassfish"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="env.HOMEDRIVE" value="C:"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.VS110COMNTOOLS" value="C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\Tools\"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="user.country" value="FR"/>
+    <property name="java.home" value="C:\glassfish3\jdk\jre"/>
+    <property name="env.PSModulePath" value="C:\windows\system32\WindowsPowerShell\v1.0\Modules\"/>
+    <property name="env.APPDATA" value="C:\Users\Nicolas\AppData\Roaming"/>
+    <property name="env.PUBLIC" value="C:\Users\Public"/>
+    <property name="env.windows_tracing_logfile" value="C:\BVTBin\Tests\installpackage\csilogfile.log"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="nb.registration.enabled" value="false"/>
+    <property name="env.ComSpec" value="C:\windows\system32\cmd.exe"/>
+    <property name="env.OS" value="Windows_NT"/>
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files"/>
+    <property name="os.version" value="6.1"/>
+    <property name="netbeans.system_http_proxy" value="DIRECT"/>
+    <property name="env.ProgramW6432" value="C:\Program Files"/>
+    <property name="https.nonProxyHosts" value="localhost|127.0.0.1|Nicolas-PC"/>
+    <property name="sun.awt.keepWorkingSetOnMinimize" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.version" value="20.13-b02"/>
+    <property name="env.USERPROFILE" value="C:\Users\Nicolas"/>
+    <property name="user.variant" value=""/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="env.TMP" value="C:\Users\Nicolas\AppData\Local\Temp"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="useJavaUtilZip" value="true"/>
+    <property name="user.home" value="C:\Users\Nicolas"/>
+    <property name="env.ProgramData" value="C:\ProgramData"/>
+    <property name="env.SESSIONNAME" value="Console"/>
+    <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="apple.laf.useScreenMenuBar" value="true"/>
+    <property name="org.xml.sax.driver" value="com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser"/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="env.NUMBER_OF_PROCESSORS" value="4"/>
+    <property name="java.library.path" value="C:\glassfish3\jdk\jre\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\MATLAB\R2009b\runtime\win64;C:\Program Files\MATLAB\R2009b\bin;C:\Program Files (x86)\Pinnacle\Shared Files\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\CloudFoundry;C:\Users\Nicolas\AppData\Local\Google\Chrome\Application;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\MATLAB\R2009b\runtime\win64;C:\Program Files\MATLAB\R2009b\bin;C:\Program Files (x86)\Pinnacle\Shared Files\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\CloudFoundry;C:\Users\Nicolas\AppData\Local\Programs\Git\cmd;."/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.class.path" value="C:\GlassFishESBv22\netbeans\platform10\lib\boot.jar;C:\GlassFishESBv22\netbeans\platform10\lib\org-openide-modules.jar;C:\GlassFishESBv22\netbeans\platform10\lib\org-openide-util.jar;C:\glassfish3\jdk\lib\dt.jar;C:\glassfish3\jdk\lib\tools.jar"/>
+    <property name="sun.java.command" value="org/netbeans/Main --branding nb"/>
+    <property name="netbeans.derby.system.home" value="C:\GlassFishESBv22\glassfish\databases"/>
+    <property name="sun.java2d.noddraw" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="jdk.home" value="C:\glassfish3\jdk"/>
+    <property name="env.windir" value="C:\windows"/>
+    <property name="env.LOGONSERVER" value="\\NICOLAS-PC"/>
+    <property name="org.openide.specification.version" value="6.2"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64"/>
+    <property name="org.netbeans.core.startup.specialResource" value="nullcom.sun.jdo.api.persistence.mapping.ejb"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="env.ProgramFiles" value="C:\Program Files"/>
+    <property name="surefire.test.class.path" value="C:\Users\Nicolas\Documents\NetBeansProjects\WebAppPlasson\target\test-classes;C:\Users\Nicolas\Documents\NetBeansProjects\WebAppPlasson\target\classes;C:\Users\Nicolas\.m2\repository\javax\ws\rs\javax.ws.rs-api\2.0\javax.ws.rs-api-2.0.jar;C:\Users\Nicolas\.m2\repository\asm\asm\3.3.1\asm-3.3.1.jar;C:\Users\Nicolas\.m2\repository\com\rabbitmq\amqp-client\3.6.0\amqp-client-3.6.0.jar;C:\Users\Nicolas\.m2\repository\com\google\code\gson\gson\2.5\gson-2.5.jar;C:\Users\Nicolas\.m2\repository\org\codehaus\jettison\jettison\1.3.7\jettison-1.3.7.jar;C:\Users\Nicolas\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;C:\Users\Nicolas\.m2\repository\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;C:\Users\Nicolas\.m2\repository\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;C:\Users\Nicolas\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;"/>
+    <property name="java.io.tmpdir" value="C:\Users\Nicolas\AppData\Local\Temp\"/>
+    <property name="env.PROCESSOR_REVISION" value="3a09"/>
+    <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files"/>
+    <property name="env.VS120COMNTOOLS" value="C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="env.SystemRoot" value="C:\windows"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.ext.dirs" value="C:\glassfish3\jdk\jre\lib\ext;C:\windows\Sun\Java\lib\ext"/>
+    <property name="user.dir" value="C:\Users\Nicolas\Documents\NetBeansProjects\WebAppPlasson"/>
+    <property name="env.LOCALAPPDATA" value="C:\Users\Nicolas\AppData\Local"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
+    <property name="env.Path" value="C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\MATLAB\R2009b\runtime\win64;C:\Program Files\MATLAB\R2009b\bin;C:\Program Files (x86)\Pinnacle\Shared Files\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\CloudFoundry;C:\Users\Nicolas\AppData\Local\Google\Chrome\Application;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\MATLAB\R2009b\runtime\win64;C:\Program Files\MATLAB\R2009b\bin;C:\Program Files (x86)\Pinnacle\Shared Files\;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SDKs\TypeScript\1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\CloudFoundry;C:\Users\Nicolas\AppData\Local\Programs\Git\cmd"/>
+    <property name="basedir" value="C:\Users\Nicolas\Documents\NetBeansProjects\WebAppPlasson"/>
+    <property name="maven.mode.standalone" value="true"/>
+    <property name="env.USERNAME" value="Nicolas"/>
+    <property name="env.SystemDrive" value="C:"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="netbeans.execution" value="true"/>
+    <property name="env.USERDOMAIN" value="Nicolas-PC"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="env.VBOX_MSI_INSTALL_PATH" value="C:\Program Files\Oracle\VirtualBox\"/>
+    <property name="env.PROCESSOR_LEVEL" value="6"/>
+  </properties>
+  <testcase time="0.325" classname="plasson.XMLHelperTest" name="testValidateXML"/>
+  <testcase time="0.012" classname="plasson.XMLHelperTest" name="testValidateXMLString"/>
+  <testcase time="0.312" classname="plasson.XMLHelperTest" name="testGetConsumerAt"/>
+  <testcase time="0.058" classname="plasson.XMLHelperTest" name="testGetProviderAt"/>
+  <testcase time="0.019" classname="plasson.XMLHelperTest" name="testGetProvidersCount"/>
+  <testcase time="0.021" classname="plasson.XMLHelperTest" name="testGetConsumersCount"/>
+  <testcase time="0.173" classname="plasson.XMLHelperTest" name="testGetProviders"/>
+  <testcase time="0.178" classname="plasson.XMLHelperTest" name="testGetConsumers"/>
+</testsuite>

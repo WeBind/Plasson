@@ -299,12 +299,18 @@ public class XMLHelper {
                 for(String key : intervals[i].getConsumersResults().keySet()){
                       // Consumer element
                      Element consumer = doc.createElement("Consumer");
-                     Attr attrType2 = doc.createAttribute("Name");
-                     attrType2.setValue("Consumer : " + key);
-                     consumer.setAttributeNode(attrType2);
+                     //Attr attrType2 = doc.createAttribute("Name");
+                     //attrType2.setValue("Consumer : " + key);
+                     //consumer.setAttributeNode(attrType2);
 
                     Rates rates = intervals[i].getConsumersResults().get(key);
-                    
+
+                        //lost requests element
+                        Element consName = doc.createElement(key);
+                        consName.appendChild(
+                        doc.createTextNode( Float.toString(rates.getLostRequests())) );
+                        consumer.appendChild(consName);
+
                         //lost requests element
                         Element lostReq = doc.createElement("LostRequests");
                         lostReq.appendChild(

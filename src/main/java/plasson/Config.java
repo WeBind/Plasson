@@ -19,8 +19,8 @@ public final class Config {
     public static final String contextName = "mContext";
     public static final String endMessage = "mEndResultsMessage";
     // Prefix used to create the consumer and provider ids
-    public static final String consumerPrefix = "client";
-    public static final String providerPrefix = "service";
+    public static final String consumerPrefix = "consumer";
+    public static final String providerPrefix = "provider";
 
     public static final String tag = "PlassonLog";
 
